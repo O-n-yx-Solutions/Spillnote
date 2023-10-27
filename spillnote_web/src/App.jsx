@@ -1,7 +1,8 @@
-import { onSnapshot, collection, addDoc } from 'firebase/firestore';
+import { onSnapshot, collection, } from 'firebase/firestore';
 import './App.css'
 import getFirestore from './Firebase';
 import { useEffect, useState } from 'react';
+import {handleEdit, handleNew, handleDelete, handleQueryDelete} from './util';
 
 function App() {
 
@@ -15,20 +16,18 @@ function App() {
     []
   );
 
-  const handleNew = async () => {
-    const value = prompt("Enter a note");
-    const collectionRef = collection(getFirestore, "notes");
-    const payload = {class: value};
-    await addDoc(collectionRef, payload);
-  }
-
   return (
     <div className='root'>
       <button className="className" onClick={handleNew}>Submit</button>
+      <button className="className" onClick={handleQueryDelete}>Delete</button>
       <ul>
         {notes.map((note) => (
           <li key={note.id}>
-            {note.class}
+           <textarea type="text" name="note" id="note" defaultValue={note.class}></textarea>
+           <a onClick={() => handleEdit(note.id)}>edit</a>
+           <button className="delete" onClick={() => handleDelete(note.id)}>
+            delete
+           </button>
           </li>
         ))}
       </ul>
