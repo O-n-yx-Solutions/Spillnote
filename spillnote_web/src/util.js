@@ -1,10 +1,10 @@
-import { collection, addDoc, setDoc, doc, deleteDoc, query, where, getDocs } from 'firebase/firestore';
+import { collection, addDoc, setDoc, doc, deleteDoc, query, where, getDocs, serverTimestamp, updateDoc } from 'firebase/firestore';
 import getFirestore from './Firebase';
 
 export const handleNew = async() => {
     const value = prompt("Enter a note");
     const collectionRef = collection(getFirestore, "notes");
-    const payload = { class: value };
+    const payload = { class: value, timestamp: serverTimestamp() };
     await addDoc(collectionRef, payload);
 }
 
@@ -12,7 +12,7 @@ export const handleEdit = async(id) => {
     const value = prompt("Edit note");
     const docRef = doc(getFirestore, "notes", id);
     const payload = { class: value };
-    setDoc(docRef, payload);
+    updateDoc(docRef, payload);
 };
 
 export const handleDelete = async(id) => {

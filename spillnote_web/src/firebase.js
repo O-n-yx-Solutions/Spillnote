@@ -6,15 +6,23 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCnMQRkegXyhYe8cdfdOLNUHF2ciA6w_6g",
-    authDomain: "spillnote-f2023.firebaseapp.com",
+    apiKey: import.meta.env.VITE_API_KEY,
+    authDomain: import.meta.env.VITE_AUTHDOMAIN,
     databaseURL: "https://spillnote-f2023-default-rtdb.firebaseio.com",
     projectId: "spillnote-f2023",
     storageBucket: "spillnote-f2023.appspot.com",
-    messagingSenderId: "301966407502",
-    appId: "1:301966407502:web:2a4f9075431afc0bf5901f"
+    messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+    appId: import.meta.env.VITE_APPID
 };
 
 // Initialize Firebase
+console.log(
+    import.meta.env.VITE_API_KEY);
+console.log(
+    import.meta.env.VITE_AUTHDOMAIN);
+console.log(
+    import.meta.env.VITE_MESSAGINGSENDERID);
+console.log(
+    import.meta.env.VITE_APPID);
 const app = initializeApp(firebaseConfig);
 export default getFirestore(app);
