@@ -23,7 +23,7 @@ function App() {
       <ul>
         {notes.map((note) => (
           <li key={note.id}>
-          <textarea onClick={() => handleEdit(note.id)} cols="30" rows="10" placeholder={note.class}></textarea>
+          <textarea onClick={() => handleEdit(note.id)} cols="20" rows="15" placeholder={note.class}></textarea>
            <a onClick={() => handleEdit(note.id)}>Edit</a>
            <button className="delete" onClick={() => handleDelete(note.id)}>
             delete
