@@ -3,16 +3,20 @@ import getFirestore from './Firebase';
 
 export const handleNew = async() => {
     const value = prompt("Enter a note");
+
     const collectionRef = collection(getFirestore, "notes");
     const payload = { class: value, timestamp: serverTimestamp() };
+
     await addDoc(collectionRef, payload);
 }
 
 export const handleEdit = async(id) => {
     const value = prompt("Edit note");
+
     const docRef = doc(getFirestore, "notes", id);
-    const payload = { class: value };
-    updateDoc(docRef, payload);
+    const payload = { class: value, timestamp: serverTimestamp() };
+
+    await updateDoc(docRef, payload);
 };
 
 export const handleDelete = async(id) => {
@@ -22,6 +26,7 @@ export const handleDelete = async(id) => {
 
 export const handleQueryDelete = async() => {
     const userQInput = prompt("Enter a note");
+
     const collectionRef = collection(getFirestore, "notes");
     const q = query(collectionRef, where("class", "==", userQInput));
     const snapshot = await getDocs(q);

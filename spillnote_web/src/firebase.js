@@ -16,13 +16,5 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-console.log(
-    import.meta.env.VITE_API_KEY);
-console.log(
-    import.meta.env.VITE_AUTHDOMAIN);
-console.log(
-    import.meta.env.VITE_MESSAGINGSENDERID);
-console.log(
-    import.meta.env.VITE_APPID);
 const app = initializeApp(firebaseConfig);
 export default getFirestore(app);
