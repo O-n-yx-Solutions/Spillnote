@@ -8,8 +8,6 @@ import {
   FlatList,
 } from "react-native";
 
-import NavigationData from "/crossplat_comps/navdata";
-const navigationData = NavigationData;
 const Nav = () => {
   return (
     <View style={styles.navbar}>
