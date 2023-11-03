@@ -4,7 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
-
+[data-theme="light"]
+{
+  background-color: white;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -40,12 +43,17 @@
 .read-the-docs {
   color: #888;
 }
-#darkmode, #font
+#settingsform, #font
 {
   display: grid;
 }
-#darkmode select, #font select
+#settingsform select, #font select
 {
-
   justify-self: center;
+}
+ /* Light settings */
+.lightsetting
+{
+  background-color: white;
+  color: black;
 }
