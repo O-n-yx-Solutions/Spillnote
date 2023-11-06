@@ -26,7 +26,7 @@ function App() {
   }
 }
 
-function Database() {
+/*function App() {
   const [notes, setNotes] = useState([
     { class: "Fetching Notes", id: "initial" },
   ]);
@@ -66,4 +66,6 @@ function Database() {
     </div>
   );
 }
+*/
+//for testing database interactions
 export default App;
