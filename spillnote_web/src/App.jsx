@@ -1,12 +1,14 @@
 import "./App.css";
-import Nav from "./Nav";
+import Explore from "./Explore";
 
 function App() {
   return (
     <div>
-      <Nav />
+      <Explore />
     </div>
   );
 }
 
 export default App;
+
+
