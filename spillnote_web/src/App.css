@@ -47,6 +47,16 @@
   color: #888;
 }
 
+/* acctPage */
+form
+{
+  display: grid;
+}
+#login_btn, #reg_btn
+{
+  margin-top: 1em;
+}
+=======
 /**************** Grid Stuff *********************/
 
 .gallery-container {
@@ -97,4 +107,3 @@
   background-color: white;
   color: black;
 }
-

@@ -5,9 +5,29 @@ import { useEffect, useState } from 'react';
 import {handleEdit, handleNew, handleDelete, handleQueryDelete} from './util';
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import RegisterPage from './Components/RegPage'
+import LoginPage from './Components/LoginPage'
 import Nav from "./Nav";
 import SettingsPage from './Components/settingsPage.jsx'
 import Explore from "./Explore";
+
+function App() 
+{
+  let action = 'reg_page';
+
+  switch(action)
+  {
+    case 'login_page':
+      return (<LoginPage />);
+      break;
+    case 'reg_page':
+      return (<RegisterPage />)
+      break;
+    default:
+      break;
+  }
+  
+
 
 function Database() {
 
@@ -36,14 +56,6 @@ function Database() {
           </li>
         ))}
       </ul>
-
-function App() {
-  return (
-    <div>
-      <Nav />
-    </div>
-  );
-}
 
 export default App;
 export default Database;
