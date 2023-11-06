@@ -4,16 +4,21 @@
   padding: 2rem;
   text-align: center;
 }
-
+[data-theme="light"]
+{
+  background-color: white;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +27,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -40,3 +46,55 @@
 .read-the-docs {
   color: #888;
 }
+
+/**************** Grid Stuff *********************/
+
+.gallery-container {
+  height: 400px;
+  /* Set a fixed height for the scrollable container */
+  overflow: auto;
+  /* Enable scrolling */
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+/* Style the individual gallery items (divs) */
+.gallery-item {
+  width: 200px;
+  height: 200px;
+  background-color: #807b7b;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+/* Hide the scrollbar in WebKit-based browsers (Chrome, Safari, etc.) */
+.gallery-container::-webkit-scrollbar {
+  width: 0px;
+  /* Adjust the width as needed */
+
+}
+
+/* End here */
+=======
+#settingsform, #font
+{
+  display: grid;
+}
+#settingsform select, #font select
+{
+  justify-self: center;
+}
+ /* Light settings */
+.lightsetting
+{
+  background-color: white;
+  color: black;
+}
+

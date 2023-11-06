@@ -3,8 +3,13 @@ import './App.css'
 import getFirestore from './Firebase';
 import { useEffect, useState } from 'react';
 import {handleEdit, handleNew, handleDelete, handleQueryDelete} from './util';
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import Nav from "./Nav";
+import SettingsPage from './Components/settingsPage.jsx'
+import Explore from "./Explore";
 
-function App() {
+function Database() {
 
   const [notes, setNotes] = useState([{class: "Fetching Notes", id: "initial"}]);
   console.log(notes);
@@ -31,8 +36,15 @@ function App() {
           </li>
         ))}
       </ul>
+
+function App() {
+  return (
+    <div>
+      <Nav />
     </div>
   );
 }
 
 export default App;
+export default Database;
+
