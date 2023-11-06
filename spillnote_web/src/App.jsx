@@ -4,7 +4,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Nav from "./Nav";
 import SettingsPage from './Components/settingsPage.jsx'
-
+import Explore from "./Explore";
 
 function App() {
   return (
@@ -15,3 +15,4 @@ function App() {
 }
 
 export default App;
+
