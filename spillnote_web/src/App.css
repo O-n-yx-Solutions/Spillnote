@@ -4,7 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
-
+[data-theme="light"]
+{
+  background-color: white;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -44,7 +47,6 @@
   color: #888;
 }
 
-
 /**************** Grid Stuff *********************/
 
 .gallery-container {
@@ -80,3 +82,19 @@
 }
 
 /* End here */
+=======
+#settingsform, #font
+{
+  display: grid;
+}
+#settingsform select, #font select
+{
+  justify-self: center;
+}
+ /* Light settings */
+.lightsetting
+{
+  background-color: white;
+  color: black;
+}
+
