@@ -1,31 +1,56 @@
-import { onSnapshot, collection } from "firebase/firestore";
+//import { onSnapshot, collection } from "firebase/firestore";
 import "./App.css";
-import getFirestore from "./Firebase";
+//import getFirestore from "./Firebase";
 import { useEffect, useState } from "react";
-import { handleEdit, handleNew, handleDelete, handleQueryDelete } from "./util";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+// import { handleEdit, handleNew, handleDelete, handleQueryDelete } from "./util";
+// import reactLogo from "./assets/react.svg";
+// import viteLogo from "/vite.svg";
 import RegisterPage from "./Components/RegPage";
 import LoginPage from "./Components/LoginPage";
 import Nav from "./Components/Nav.jsx";
-import SettingsPage from "./Components/settingsPage.jsx";
+import Choices from "./Choices";
+import SettingsPage from "./Components/SettingsPage";
 import Explore from "./Explore";
+import RegUser from "./Components/scripts/RegUser.js"
+// import Nav from "./Nav";
+// import SettingsPage from "./Components/settingsPage.jsx";
+// import Explore from "./Explore";
 
-function App() {
-  let action = "nav";
+function App() 
+{
+  const [action, setAction] = useState(' ');
 
+  useEffect(( ) => 
+  {
+    const urlSearchString = window.location.search;
+    const params = new URLSearchParams(urlSearchString);
+    setAction(params.get('action'));
+
+  }, [ ]);
+  
   switch (action) {
     case "nav":
       return <Nav />;
       break;
     case "login_page":
       return <LoginPage />;
-      break;
+
     case "reg_page":
       return <RegisterPage />;
-      break;
+
+    case "settings_page":
+      return <SettingsPage />
+    
+    case "explore_link":
+      return < Explore/>
+
+    case "reg_user":
+        RegUser();
+        return <Choices />
+
     default:
-      break;
+      return <Choices />
+      
   }
 }
 
