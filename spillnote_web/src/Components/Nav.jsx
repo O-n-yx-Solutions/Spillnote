@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import YourComponent from "./TagCreator";
 const navigationData = [
   {
     id: 1,
@@ -33,7 +33,7 @@ const Nav = () => {
       <div className="header">
         <img src="../public/Logo.svg" alt="Logo" />
         <div className="title">Spillnote</div>
-        <button className="add-tag-button">Add Tag</button>
+        <YourComponent />
         <div className="settings-wheel">⚙️</div>
       </div>
 

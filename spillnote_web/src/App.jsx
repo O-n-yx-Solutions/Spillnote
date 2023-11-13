@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 // import viteLogo from "/vite.svg";
 import RegisterPage from "./Components/RegPage";
 import LoginPage from "./Components/LoginPage";
+import Nav from "./Components/Nav.jsx";
 import Choices from "./Choices";
 import SettingsPage from "./Components/SettingsPage";
 import Explore from "./Explore";
@@ -14,7 +15,6 @@ import RegUser from "./Components/scripts/RegUser.js"
 // import Nav from "./Nav";
 // import SettingsPage from "./Components/settingsPage.jsx";
 // import Explore from "./Explore";
-
 
 function App() 
 {
@@ -29,6 +29,9 @@ function App()
   }, [ ]);
   
   switch (action) {
+    case "nav":
+      return <Nav />;
+      break;
     case "login_page":
       return <LoginPage />;
 
