@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 
 const TagsScrollable = ({ items, onSelect }) => {
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [hoveredItem, setHoveredItem] = useState(null);
+
+  const handleItemSelect = (item) => {
+    setSelectedItem(item);
+    onSelect(item);
+  };
+
   const styles = {
     scrollableContainer: {
       overflowY: "scroll",
       height: "200px",
-      border: "1px solid #ccc",
     },
     listItem: {
       padding: "8px",
@@ -19,8 +26,18 @@ const TagsScrollable = ({ items, onSelect }) => {
         {items.map((item, index) => (
           <li
             key={index}
-            style={styles.listItem}
-            onClick={() => onSelect(item)}
+            style={{
+              ...styles.listItem,
+              backgroundColor:
+                selectedItem === item
+                  ? "lightblue"
+                  : hoveredItem === item
+                  ? "lightgray"
+                  : "#242424",
+            }}
+            onClick={() => handleItemSelect(item)}
+            onMouseEnter={() => setHoveredItem(item)}
+            onMouseLeave={() => setHoveredItem(null)}
           >
             {item}
           </li>
@@ -71,7 +88,7 @@ const Popout = ({ onClose, onSelectTag, onSubmit }) => {
   );
 };
 
-const YourComponent = () => {
+const PopoutHandler = () => {
   const [isPopoutOpen, setPopoutOpen] = useState(false);
   const [selectedTag, setSelectedTag] = useState("");
 
@@ -85,6 +102,7 @@ const YourComponent = () => {
 
   const handleSubmit = (nameEntry) => {
     console.log("Tag Created:", selectedTag, nameEntry);
+
     setPopoutOpen(false);
   };
 
@@ -103,4 +121,4 @@ const YourComponent = () => {
   );
 };
 
-export default YourComponent;
+export default PopoutHandler;
