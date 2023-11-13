@@ -11,23 +11,20 @@ import Nav from "./Components/Nav.jsx";
 import Choices from "./Choices";
 import SettingsPage from "./Components/SettingsPage";
 import Explore from "./Explore";
-import RegUser from "./Components/scripts/RegUser.js"
+import RegUser from "./Components/scripts/RegUser.js";
 // import Nav from "./Nav";
 // import SettingsPage from "./Components/settingsPage.jsx";
 // import Explore from "./Explore";
 
-function App() 
-{
-  const [action, setAction] = useState(' ');
+function App() {
+  const [action, setAction] = useState(" ");
 
-  useEffect(( ) => 
-  {
+  useEffect(() => {
     const urlSearchString = window.location.search;
     const params = new URLSearchParams(urlSearchString);
-    setAction(params.get('action'));
+    setAction(params.get("action"));
+  }, []);
 
-  }, [ ]);
-  
   switch (action) {
     case "nav":
       return <Nav />;
@@ -39,18 +36,17 @@ function App()
       return <RegisterPage />;
 
     case "settings_page":
-      return <SettingsPage />
-    
+      return <SettingsPage />;
+
     case "explore_link":
-      return < Explore/>
+      return <Explore />;
 
     case "reg_user":
-        RegUser();
-        return <Choices />
+      RegUser();
+      return <Choices />;
 
     default:
-      return <Choices />
-      
+      return <Nav />;
   }
 }
 
