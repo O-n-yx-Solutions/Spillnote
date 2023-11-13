@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PushTag from "./scripts/PushTag";
 
 const TagsScrollable = ({ items, onSelect }) => {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -79,6 +80,7 @@ const Popout = ({ onClose, onSelectTag, onSubmit }) => {
               value={nameEntry}
               onChange={(e) => setNameEntry(e.target.value)}
             />
+            {/* ZANE PUT YOUR ICON SELECTOR HTML HERE */}
             <button type="submit">Submit</button>
           </form>
         </section>
@@ -100,9 +102,14 @@ const PopoutHandler = () => {
     setSelectedTag(tag);
   };
 
+  const usertag = "0854oFj8R4PuW0iDbDaQ"; //change this to return current user
+  const iconColor = "";
+  const iconPath = "";
   const handleSubmit = (nameEntry) => {
-    console.log("Tag Created:", selectedTag, nameEntry);
-
+    // ZANE, send the icon color after nameEntry, and the icon path after that
+    //AFTER ELI ADDS THE METHOD TO CHECK WHAT THE CURRENT USER IS, PASS THAT IN AS WELL
+    console.log("Tag Created:", selectedTag, nameEntry, iconColor, iconPath);
+    PushTag(usertag, selectedTag, nameEntry, iconColor, iconPath);
     setPopoutOpen(false);
   };
 
