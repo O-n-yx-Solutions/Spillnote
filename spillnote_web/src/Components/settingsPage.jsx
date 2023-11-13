@@ -1,35 +1,39 @@
-// function ModeSettings()
-// {
-//     let mode = document.getElementById("darksetting");
-
-//     mode.classList.toggle("lightsetting");
-
-//     //document.getElementById('darksetting') = mode;
-// }
-import DarkMode from './scripts/DarkMode.jsx'
-import { useState, useRef } from 'react';
+import React from "react";
+import Sun from "./images/Sun.svg?react";
+import Moon  from "./images/Moon.svg?react";
+import "./styles/DarkMode.css";
 
 export default function SettingsPage()
 {
-    const theme = useRef(null);
-    const [show, setShow] = useState(true);
-
+    
+        const setDarkMode = () => 
+        {
+            document.querySelector("body").setAttribute('data-theme', 'dark')
+        }
+        const setLightMode = () => 
+        {
+            document.querySelector("body").setAttribute('data-theme', 'light')
+        }
+        const toggleTheme = e =>
+        {
+            if(e.target.checked) setDarkMode();
+            else setLightMode();
+        }
     return (
-        <div className="settings">
-            <DarkMode />
-            {/* <form id="settingsform">
-                <label htmlFor="dmselect">Theme</label>
-                <select name="themeselect" id="dmselect">
-                    <option value={0}>Dark</option>
-                    <option value={1}>Light</option>
-                </select>
-                <label htmlFor="fontselect">Font</label>
-                <select name="fontselect" id="fontselect">
-                    <option value={0}>Times New Roman</option>
-                    <option value={1}>Cursive</option>
-                </select>
-                <button>Apply</button>
-            </form> */}
+        <div className='dark_mode'>
+            <a href="default">Return to Choices</a>
+            <h1>Settings</h1>
+            <input
+                className='dark_mode_input'
+                type='checkbox'
+                id='darkmode-toggle'
+                onChange={toggleTheme}
+            />
+            <label className='dark_mode_label' htmlFor='darkmode-toggle'>
+                <Sun />
+                <Moon />
+            </label>
         </div>
     );
-}
+};
+   

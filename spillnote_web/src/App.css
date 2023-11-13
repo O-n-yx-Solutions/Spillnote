@@ -52,11 +52,10 @@ form
 {
   display: grid;
 }
-#login_btn, #reg_btn
+#sub_btn
 {
   margin-top: 1em;
 }
-=======
 /**************** Grid Stuff *********************/
 
 .gallery-container {
@@ -92,7 +91,7 @@ form
 }
 
 /* End here */
-=======
+
 #settingsform, #font
 {
   display: grid;
@@ -106,4 +105,8 @@ form
 {
   background-color: white;
   color: black;
+}
+.choices
+{
+  display: grid;
 }
