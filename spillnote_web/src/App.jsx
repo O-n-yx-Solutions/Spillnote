@@ -7,14 +7,17 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import RegisterPage from "./Components/RegPage";
 import LoginPage from "./Components/LoginPage";
-import Nav from "./Nav";
+import Nav from "./Components/Nav.jsx";
 import SettingsPage from "./Components/settingsPage.jsx";
 import Explore from "./Explore";
 
 function App() {
-  let action = "reg_page";
+  let action = "nav";
 
   switch (action) {
+    case "nav":
+      return <Nav />;
+      break;
     case "login_page":
       return <LoginPage />;
       break;
