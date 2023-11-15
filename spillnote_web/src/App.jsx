@@ -9,7 +9,7 @@ import Explore from "./Explore";
 function App() {
   return (
     <div>
-      <Nav />
+      <Explore/>
     </div>
   );
 }

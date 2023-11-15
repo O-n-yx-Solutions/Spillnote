@@ -47,7 +47,7 @@
   color: #888;
 }
 
-/**************** Grid Stuff *********************/
+/**************** Grid Stuff for Explore *********************/
 
 .gallery-container {
   height: 400px;
@@ -68,7 +68,7 @@
   height: 200px;
   background-color: #807b7b;
   border: 1px solid #ccc;
-  display: flex;
+  /* display: flex; */
   align-items: center;
   justify-content: center;
   font-size: 24px;
@@ -76,13 +76,23 @@
 
 /* Hide the scrollbar in WebKit-based browsers (Chrome, Safari, etc.) */
 .gallery-container::-webkit-scrollbar {
-  width: 0px;
-  /* Adjust the width as needed */
+  width: 0px;/* Adjust the width as needed */
 
 }
 
-/* End here */
-=======
+/* Style for buttons within the gallery item */
+.gallery-item button {
+  font-size: 12px;
+  padding: 5px 10px;
+  margin-right: 5px;
+  /* position: absolute; */
+  bottom: 0;
+  left: 0;
+}
+
+/* End here for Explore css stuff*/
+
+
 #settingsform, #font
 {
   display: grid;
