@@ -1,10 +1,10 @@
-//import { onSnapshot, collection } from "firebase/firestore";
+import { onSnapshot, collection } from "firebase/firestore";
 import "./App.css";
-//import getFirestore from "./Firebase";
+import getFirestore from "./Firebase";
 import { useEffect, useState } from "react";
-// import { handleEdit, handleNew, handleDelete, handleQueryDelete } from "./util";
-// import reactLogo from "./assets/react.svg";
-// import viteLogo from "/vite.svg";
+import { handleEdit, handleNew, handleDelete, handleQueryDelete } from "./util";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
 import RegisterPage from "./Components/RegPage";
 import LoginPage from "./Components/LoginPage";
 import Nav from "./Components/Nav.jsx";
@@ -12,9 +12,7 @@ import Choices from "./Choices";
 import SettingsPage from "./Components/SettingsPage";
 import Explore from "./Explore";
 import RegUser from "./Components/scripts/RegUser.js";
-// import Nav from "./Nav";
-// import SettingsPage from "./Components/settingsPage.jsx";
-// import Explore from "./Explore";
+
 
 function App() {
   const [action, setAction] = useState(" ");
@@ -64,6 +62,8 @@ function App() {
   );
 
   return (
+    <div>
+      <Explore/>
     <div className="root">
       <button className="className" onClick={handleNew}>
         Submit
