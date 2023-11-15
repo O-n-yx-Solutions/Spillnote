@@ -47,7 +47,16 @@
   color: #888;
 }
 
-/**************** Grid Stuff for Explore *********************/
+/* acctPage */
+form
+{
+  display: grid;
+}
+#sub_btn
+{
+  margin-top: 1em;
+}
+/**************** Grid Stuff *********************/
 
 .gallery-container {
   height: 400px;
@@ -89,9 +98,8 @@
   bottom: 0;
   left: 0;
 }
-
 /* End here for Explore css stuff*/
-
+/* End here */
 
 #settingsform, #font
 {
@@ -107,4 +115,7 @@
   background-color: white;
   color: black;
 }
-
+.choices
+{
+  display: grid;
+}

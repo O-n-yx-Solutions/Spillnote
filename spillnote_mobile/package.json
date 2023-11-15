@@ -17,7 +17,8 @@
     "react-native-drawer-layout": "^3.2.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "metro": "^0.80.0"
   },
   "private": true
 }

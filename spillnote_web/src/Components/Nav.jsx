@@ -1,21 +1,21 @@
 import React, { useState } from "react";
-
+import YourComponent from "./TagCreator";
 const navigationData = [
   {
     id: 1,
     title: "Root Tag 1",
     children: [
-      { id: 11, title: "Tag A" },
-      { id: 12, title: "Tag B" },
-      { id: 13, title: "Tag C" },
+      { id: 11, title: "Tag A", argumetns: { Tag: "TagA" } },
+      { id: 12, title: "Tag B", argumetns: { Tag: "TagB" } },
+      { id: 13, title: "Tag C", argumetns: { Tag: "TagC" } },
     ],
   },
   {
     id: 2,
     title: "Section 2",
     children: [
-      { id: 21, title: "Tag A" },
-      { id: 22, title: "Tag B" },
+      { id: 21, title: "Tag A", argumetns: { Tag: "TagA" } },
+      { id: 22, title: "Tag B", argumetns: { Tag: "TagA" } },
     ],
   },
 ];
@@ -33,7 +33,7 @@ const Nav = () => {
       <div className="header">
         <img src="../public/Logo.svg" alt="Logo" />
         <div className="title">Spillnote</div>
-        <button className="add-tag-button">Add Tag</button>
+        <YourComponent />
         <div className="settings-wheel">⚙️</div>
       </div>
 
