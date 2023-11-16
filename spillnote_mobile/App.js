@@ -12,7 +12,7 @@ export default function App() {
     <View style={styles.container}>
       <LoginPage />
       <StatusBar style="auto" />
-      <Explor />
+      <Explore />
     </View>
   );
 }
