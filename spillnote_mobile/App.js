@@ -4,13 +4,14 @@ import LoginPage from './Components/loginPageMobile';
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import Nav from "./Components/Nav";
+import NoteCreate from './Components/noteCreate';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <LoginPage />
+    return ( 
+        <View style={styles.container}>
+      <NoteCreate />
       <StatusBar style="auto" />
-      //<Nav />
+      <Nav />
     </View>
   );
 }

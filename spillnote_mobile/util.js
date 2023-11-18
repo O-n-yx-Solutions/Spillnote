@@ -1,6 +1,5 @@
 import { collection, addDoc, setDoc, doc, deleteDoc, query, where, getDocs, serverTimestamp, updateDoc } from 'firebase/firestore';
 import getFirestore from 'Firebase';
-import getAuth from 'Firebase';
 
 export const handleNew = async() => {
     const value = prompt("Enter a note");
