@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { signup, logout, useAuth } from "../firebase";
+import { signup, login, logout, useAuth } from "../firebase";
 
 export default function RegisterPage()
 {
@@ -16,6 +16,16 @@ export default function RegisterPage()
             await signup(emailRef.current.value, passwordRef.current.value);
         } catch {
             alert("Error!");
+        }
+        setLoading(false);
+    }
+
+    async function handleLogin(){
+        setLoading(true);
+        try {
+            await login(emailRef.current.value, passwordRef.current.value);
+        } catch {
+            alert("Login Failed");
         }
         setLoading(false);
     }
@@ -54,13 +64,14 @@ export default function RegisterPage()
     //     );
     return (
         <div>
-            <div> Currently Logged In As: {currentUser?.email} </div>
+            <div> Signed Up As: {currentUser?.email} </div>
             <div>
                 <input ref={emailRef} type="email" name="" id="" placeholder="Email"/>
                 <input ref={passwordRef} type="password" name="" id="" placeholder="Password"/>
             </div>
 
             <button disabled={loading || currentUser} onClick={handleSignup}>Sign Up</button>
+            <button disabled={loading || currentUser} onClick={handleLogin}>Log In</button>
             <button disabled={loading || !currentUser} onClick={handleLogout}>Log Out</button>
         </div>
     );
