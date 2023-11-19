@@ -1,6 +1,7 @@
 
 import { useRef, useState } from "react";
 import { login, logout, useAuth } from "../firebase";
+import Header from "../Common/Header.jsx";
 
 export default function LoginPage()
 {
@@ -14,44 +15,31 @@ export default function LoginPage()
         // setLoading(true);
         try {
             await login(emailRef.current.value, passwordRef.current.value);
+            window.location.replace("?action=acct_page");
         } catch {
             alert("Login Failed");
         }
         // setLoading(false);
     }
 
-    async function handleLogout() {
-        setLoading(true);
-        try {
-            await logout();
-        } catch {
-            alert("Error!");
-        }
-        setLoading(false);
-    }
+    // async function handleLogout() {
+    //     setLoading(true);
+    //     try {
+    //         await logout();
+    //     } catch {
+    //         alert("Error!");
+    //     }
+    //     setLoading(false);
+    // }
     return (
-        // <section>
-        //     <a href="default">Return to Choices</a>
-        //     <h1>Log In</h1>
-        //     <form id="login_form">
-        //         <label htmlFor="clientUsername">Username:</label>
-        //         <input type="email" id="clientUsername"></input>
-
-        //         <label htmlFor="clientPass">Password:</label>
-        //         <input type="password" id="clientPassword"></input>
-
-        //         <input type="submit" name="submit" id="sub_btn" value="Log In"></input>
-        //     </form>
-        //     <p>Need an account? <a href='?action=reg_page'>Register</a></p>
-        // </section>
-        <div>
-            <div>Logged In As: {currentUser?.email}</div>
-            <div>
-                <input ref={emailRef} type="email" name="" id="" placeholder="Email" />
-                <input ref={passwordRef} type="password" name="" id="" placeholder="Password"/>
+        <div className="login-out-form">
+            <Header />
+            <h2>Login</h2>
+            <div className="login-out-form-inputs">
+                <input ref={emailRef} type="email" name="clientEmail" id="clientEmail" placeholder="Email" />
+                <input ref={passwordRef} type="password" name="clientPassword" id="clientPassword" placeholder="Password"/>
             </div>
             <button disabled={loading || currentUser} onClick={handleLogin}>Log In</button>
-            <button disabled={loading || !currentUser} onClick={handleLogout}>Log Out</button>
 
         </div>
         

@@ -10,7 +10,8 @@ import LoginPage from "./Components/LoginPage";
 import Choices from "./Choices";
 import SettingsPage from "./Components/SettingsPage";
 import Explore from "./Explore";
-import RegUser from "./Components/scripts/RegUser.js"
+import RegUser from "./Components/scripts/RegUser.js";
+import AcctPage from "./Components/AcctPage.jsx";
 // import Nav from "./Nav";
 // import SettingsPage from "./Components/settingsPage.jsx";
 // import Explore from "./Explore";
@@ -44,6 +45,9 @@ function App()
     case "reg_user":
         RegUser();
         return <Choices />
+
+    case "acct_page":
+      return <AcctPage />
 
     default:
       return <Choices />

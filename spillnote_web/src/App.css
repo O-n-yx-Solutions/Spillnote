@@ -110,3 +110,42 @@ form
 {
   display: grid;
 }
+
+/* Header */
+#header
+{
+  display: grid;
+}
+#logo
+{
+  grid-column: 1;
+}
+#logo img
+{
+  max-height: 100px;
+  border-radius: 1em;
+}
+#account
+{
+  display: grid;
+  grid-column: 2;
+}
+
+/* Login/out account */
+.login-out-form
+{
+  display: grid;
+}
+.login-out-form-inputs
+{
+  display: grid;
+}
+.login-out-form-inputs input
+{
+  padding: 1em;
+  margin: 1em;
+}
+#logged-in-as
+{
+  text-align: right;
+}
