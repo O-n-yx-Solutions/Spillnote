@@ -1,13 +1,10 @@
-import { onSnapshot, collection } from "firebase/firestore";
 import "./App.css";
-import getFirestore from "./Firebase";
 import { useEffect, useState } from "react";
 // import reactLogo from "./assets/react.svg";
 // import viteLogo from "/vite.svg";
 import { onSnapshot, collection } from "firebase/firestore";
 import "./App.css";
 import getFirestore from "./Firebase";
-import { useEffect, useState } from "react";
 import { handleEdit, handleNew, handleDelete, handleQueryDelete } from "./util";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
