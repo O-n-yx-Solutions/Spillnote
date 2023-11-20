@@ -1,26 +1,39 @@
+import { useRef, useState } from "react";
+import { signup, login, logout, useAuth } from "../firebase";
+import Header from "../Common/Header.jsx";
+
 export default function RegisterPage()
 {
-    return (
-        <section>
-            <a href="default">Return to Choices</a>
-            <h1>Register</h1>
-            <form id="reg_form">
-                <label htmlFor="clientFirstname">First Name:</label>
-                <input type="text" id="clientFirstname"></input>
-    
-                <label htmlFor="clientLastname">Last Name:</label>
-                <input type="text" id="clientLastname"></input>
+    const [loading, setLoading] = useState(false);
+    const currentUser = useAuth();
 
-                <label htmlFor="clientEmail">Email:</label>
-                <input type="email" id="clientEmail"></input>
-    
-                <label htmlFor="clientPassword">Password:</label>
-                <input type="password" id="clientPassword"></input>
-    
-                <input type="submit" name="submit" id="sub_btn" value="Sign Up"></input>
-                <input type="hidden" name="action" value="reg_user"></input>
-            </form>
-            <p>Already have an account? <a href="?action=login_page">Log In</a></p>
-        </section>
-        );
+    const fnameRef = useRef();
+    const lnameRef = useRef();
+    const emailRef = useRef();
+    const passwordRef = useRef();
+
+    async function handleSignup() {
+        
+        setLoading(true);
+        try {
+            await signup(emailRef.current.value, passwordRef.current.value);
+            window.location.replace("?action=acct_page");
+        } catch {
+            alert("Error!");
+        }
+        setLoading(false);
+    }
+
+    return (
+        <div className="login-out-form">
+            <Header />
+            <h1>Sign Up</h1>
+            <div className="login-out-form-inputs">
+                <input ref={emailRef} type="email" name="clientEmail" id="clientEmail" placeholder="Email" required/>
+                <input ref={passwordRef} type="password" name="clientPassword" id="clientPassword" placeholder="Password" required/>
+            </div>
+            <button disabled={loading || currentUser} onClick={handleSignup}>Sign Up</button>
+            
+        </div>
+    );
 }

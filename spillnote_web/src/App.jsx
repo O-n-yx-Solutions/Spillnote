@@ -15,7 +15,11 @@ import Choices from "./Choices";
 import SettingsPage from "./Components/SettingsPage";
 import Explore from "./Explore";
 import RegUser from "./Components/scripts/RegUser.js";
-import Credit from "./Credit.jsx";
+import Credit from "./Create.jsx";
+import AcctPage from "./Components/AcctPage.jsx";
+// import Nav from "./Nav";
+// import SettingsPage from "./Components/settingsPage.jsx";
+// import Explore from "./Explore";
 
 function App() {
   const [action, setAction] = useState(" ");
@@ -48,6 +52,12 @@ function App() {
     case "reg_user":
       RegUser();
       return <Choices />;
+
+    case "acct_page":
+      return <AcctPage />;
+
+    case "acct_page":
+      return <AcctPage />;
 
     default:
       return <Credit noteid={null} />;

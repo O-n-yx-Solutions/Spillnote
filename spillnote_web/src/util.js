@@ -11,16 +11,16 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import getFirestore from "./Firebase";
+import getAuth from "./Firebase";
+
 
 export const handleNew = async () => {
   const collectionRef = collection(getFirestore, "notes"); // leave same
   // HTML or React text area element
-  var textContent = prompt("Enter a note");
+  const textContent = prompt("Enter a note");
   // FUntion to check on edit of texty area that sets the variables value and payload
   const payload = { className: textContent, timestamp: serverTimestamp() };
-
-  await addDoc(collectionRef, payload);
-};
+}
 // same here ^^^
 export const handleEdit = async (id) => {
   const docRef = doc(getFirestore, "notes", id); // leave same
@@ -29,7 +29,7 @@ export const handleEdit = async (id) => {
 
   const payload = { className: textContent, timestamp: serverTimestamp() };
 
-  await updateDoc(docRef, payload);
+  updateDoc(docRef, payload);
 };
 
 export const handleDelete = async (id) => {
