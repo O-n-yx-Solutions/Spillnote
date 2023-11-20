@@ -31,13 +31,21 @@ const Nav = () => {
   return (
     <div className="navbar">
       <div className="header">
-        <img src="../public/Logo.svg" alt="Logo" />
-        <div className="title">Spillnote</div>
-        <button className="add-tag-button">Add Tag</button>
-        <div className="settings-wheel">⚙️</div>
+        <div id="img-title">
+          <img src="../public/Logo.svg" alt="Logo" />
+          <div className="title">Spillnote</div>
+        </div>
+        <div id="account">
+          <div className="settings-wheel"><a href="?action=settings_page">⚙️</a></div>
+          <a id="myaccount-link" href="?action=acct_page">My Account</a>
+          <a id="return-home" href="?action=default">Return to Home Page</a>
+      </div>
       </div>
 
       <ul className="dynamic-list">
+        <button className="add-tag-button">Add Tag</button>
+        <li>Recent</li>
+        <li>Favorites</li>
         {navigationData.map((section) => (
           <li key={section.id}>
             <div
@@ -60,10 +68,10 @@ const Nav = () => {
       </ul>
       <div className="statics">
         <ul>
-          <li>Recent</li>
-          <li>Favorites</li>
+          
         </ul>
       </div>
+      
     </div>
   );
 };
