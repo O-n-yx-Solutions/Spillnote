@@ -10,22 +10,24 @@ import {
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
-//import getFirestore from "./Firebase";
+import getFirestore from "./Firebase";
 
 export const handleNew = async () => {
-  const value = prompt("Enter a note");
-
-  const collectionRef = collection(getFirestore, "notes");
-  const payload = { className: value, timestamp: serverTimestamp() };
+  const collectionRef = collection(getFirestore, "notes"); // leave same
+  // HTML or React text area element
+  var textContent = prompt("Enter a note");
+  // FUntion to check on edit of texty area that sets the variables value and payload
+  const payload = { className: textContent, timestamp: serverTimestamp() };
 
   await addDoc(collectionRef, payload);
 };
-
+// same here ^^^
 export const handleEdit = async (id) => {
-  const value = prompt("Edit note");
+  const docRef = doc(getFirestore, "notes", id); // leave same
 
-  const docRef = doc(getFirestore, "notes", id);
-  const payload = { className: value, timestamp: serverTimestamp() };
+  const textContent = prompt("Edit note");
+
+  const payload = { className: textContent, timestamp: serverTimestamp() };
 
   await updateDoc(docRef, payload);
 };
