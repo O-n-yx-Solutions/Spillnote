@@ -10,13 +10,14 @@ import {
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
-import getFirestore from "./Firebase";
+import getFirestore from "Firebase";
+import getAuth from "Firebase";
 
 export const handleNew = async () => {
   const value = prompt("Enter a note");
 
   const collectionRef = collection(getFirestore, "notes");
-  const payload = { className: value, timestamp: serverTimestamp() };
+  const payload = { class: value, timestamp: serverTimestamp() };
 
   await addDoc(collectionRef, payload);
 };
