@@ -15,7 +15,7 @@ import Choices from "./Choices";
 import SettingsPage from "./Components/SettingsPage";
 import Explore from "./Explore";
 import RegUser from "./Components/scripts/RegUser.js";
-import Create from "./Create.jsx";
+import Credit from "./Create.jsx";
 
 function App() {
   const [action, setAction] = useState(" ");
@@ -50,7 +50,7 @@ function App() {
       return <Choices />;
 
     default:
-      return <Create />;
+      return <Credit noteid={"OlUcXegtRtMlPZCt9Jnb"} />;
   }
 }
 
