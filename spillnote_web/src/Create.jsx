@@ -6,19 +6,17 @@ import { handleEdit, handleNew, handleDelete, handleQueryDelete } from "./util";
 export default function Credit(noteid) {
   if (noteid != null) {
     //edit
-    {
-      handleEdit(noteid);
-    }
+    handleEdit(noteid);
+    console.log("edit");
   } else {
     //create
-    {
-      handleNew;
-    }
+    handleNew;
+    console.log("new");
   }
 }
-//   const [notes, setNotes] = useState([
-//     { class: "Fetching Notes", id: "initial" },
-//   ]);
+// const [notes, setNotes] = useState([
+//   { class: "Fetching Notes", id: "initial" },
+// ]);
 //   console.log(notes);
 //   useEffect(
 //     () =>

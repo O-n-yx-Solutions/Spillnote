@@ -10,7 +10,7 @@ import {
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
-//import getFirestore from "./Firebase";
+import getFirestore from "./Firebase";
 
 export const handleNew = async () => {
   const value = prompt("Enter a note");
@@ -27,7 +27,7 @@ export const handleEdit = async (id) => {
   const docRef = doc(getFirestore, "notes", id);
   const payload = { className: value, timestamp: serverTimestamp() };
 
-  await updateDoc(docRef, payload);
+  updateDoc(docRef, payload);
 };
 
 export const handleDelete = async (id) => {

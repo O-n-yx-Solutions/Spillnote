@@ -50,7 +50,8 @@ function App() {
       return <Choices />;
 
     default:
-      return <Credit noteid={"OlUcXegtRtMlPZCt9Jnb"} />;
+      return <Nav />;
+    //Credit noteid={null} /</>
   }
 }
 
