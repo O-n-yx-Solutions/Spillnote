@@ -10,8 +10,8 @@ import {
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
-import getFirestore from "Firebase";
-import getAuth from "Firebase";
+import getFirestore from "./Firebase";
+import getAuth from "./Firebase";
 
 export const handleNew = async () => {
   const value = prompt("Enter a note");

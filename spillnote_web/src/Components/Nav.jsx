@@ -31,10 +31,6 @@ const Nav = () => {
   return (
     <div className="navbar">
       <div className="header">
-        <img src="../public/Logo.svg" alt="Logo" />
-        <div className="title">Spillnote</div>
-        <YourComponent />
-        <div className="settings-wheel">⚙️</div>
         <div id="img-title">
           <img src="../public/Logo.svg" alt="Logo" />
           <div className="title">Spillnote</div>
@@ -53,7 +49,7 @@ const Nav = () => {
       </div>
 
       <ul className="dynamic-list">
-        <button className="add-tag-button">Add Tag</button>
+        <YourComponent />
         <li>Recent</li>
         <li>Favorites</li>
         {navigationData.map((section) => (
