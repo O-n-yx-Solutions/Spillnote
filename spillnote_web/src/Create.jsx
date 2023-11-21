@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { handleEdit, handleNew, handleDelete, handleQueryDelete } from "./util";
 
 export default function Credit(noteid) {
-  if (noteid != null) {
+  if (noteid = null) {
     //edit
     {
       handleEdit(noteid);
