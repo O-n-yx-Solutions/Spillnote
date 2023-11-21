@@ -42,6 +42,9 @@ const Nav = () => {
           <a id="myaccount-link" href="?action=acct_page">
             My Account
           </a>
+          <a id="myaccount-link" href="?action=reg_page">
+            Register
+          </a>
           <a id="return-home" href="?action=default">
             Return to Home Page
           </a>

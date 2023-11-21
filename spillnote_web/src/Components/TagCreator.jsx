@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PushTag from "./scripts/PushTag";
+import { useAuth } from "../firebase";
 
 const TagItems = Array.from({ length: 20 }, (_, i) => ({
   id: `tag_${i + 1}`,
@@ -24,6 +25,7 @@ const Popout = ({ onClose, onSubmit }) => {
   const [selectedIcon, setSelectedIcon] = useState(null);
   const [tagColor, setTagColor] = useState("#000000"); // Default color is black
   const [hoveredItem, setHoveredItem] = useState(null);
+  const currentUser = useAuth();
 
   const styles = {
     scrollableContainer: {
@@ -47,7 +49,7 @@ const Popout = ({ onClose, onSubmit }) => {
     e.preventDefault();
     console.log(
       "Tag Created:",
-      usertag,
+      currentUser.email,
       selectedTag,
       nameEntry,
       tagColor,
