@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import YourComponent from "./TagCreator";
+import PopoutHandler from "./TagCreator";
 const navigationData = [
   {
     id: 1,
@@ -49,7 +49,7 @@ const Nav = () => {
       </div>
 
       <ul className="dynamic-list">
-        <YourComponent />
+        <PopoutHandler />
         <li>Recent</li>
         <li>Favorites</li>
         {navigationData.map((section) => (

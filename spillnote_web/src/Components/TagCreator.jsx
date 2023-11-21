@@ -1,14 +1,29 @@
 import React, { useState } from "react";
 import PushTag from "./scripts/PushTag";
 
-const TagsScrollable = ({ items, onSelect }) => {
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [hoveredItem, setHoveredItem] = useState(null);
+const TagItems = Array.from({ length: 20 }, (_, i) => ({
+  id: `tag_${i + 1}`,
+  name: `Item ${i + 1}`,
+}));
+const Images = [
+  { id: 1, imageUrl: "/tagIcons/image1.svg", url: "/" },
+  { id: 2, imageUrl: "/tagIcons/image2.svg", url: "/" },
+  { id: 3, imageUrl: "/tagIcons/image3.svg", url: "/" },
+  { id: 4, imageUrl: "/tagIcons/image4.svg", url: "/" },
+  { id: 5, imageUrl: "/tagIcons/image5.svg", url: "/" },
+  { id: 6, imageUrl: "/tagIcons/image6.svg", url: "/" },
+  { id: 7, imageUrl: "/tagIcons/image7.svg", url: "/" },
+  { id: 8, imageUrl: "/tagIcons/image8.svg", url: "/" },
+  { id: 9, imageUrl: "/tagIcons/image9.svg", url: "/" },
+  { id: 10, imageUrl: "/tagIcons/image10.svg", url: "/" },
+];
 
-  const handleItemSelect = (item) => {
-    setSelectedItem(item);
-    onSelect(item);
-  };
+const Popout = ({ onClose, onSubmit }) => {
+  const [nameEntry, setNameEntry] = useState("");
+  const [selectedTag, setSelectedTag] = useState(null);
+  const [selectedIcon, setSelectedIcon] = useState(null);
+  const [tagColor, setTagColor] = useState("#000000"); // Default color is black
+  const [hoveredItem, setHoveredItem] = useState(null);
 
   const styles = {
     scrollableContainer: {
@@ -19,56 +34,90 @@ const TagsScrollable = ({ items, onSelect }) => {
       padding: "8px",
       borderBottom: "1px solid #eee",
     },
+    icon: {
+      padding: "8px",
+      borderBottom: "1px solid #eee",
+      width: "20px",
+      height: "20px",
+    },
   };
-
-  return (
-    <div style={styles.scrollableContainer}>
-      <ul style={{ listStyle: "none", padding: "0" }}>
-        {items.map((item, index) => (
-          <li
-            key={index}
-            style={{
-              ...styles.listItem,
-              backgroundColor:
-                selectedItem === item
-                  ? "lightblue"
-                  : hoveredItem === item
-                  ? "lightgray"
-                  : "#242424",
-            }}
-            onClick={() => handleItemSelect(item)}
-            onMouseEnter={() => setHoveredItem(item)}
-            onMouseLeave={() => setHoveredItem(null)}
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-const TagItems = Array.from({ length: 20 }, (_, i) => `Item ${i + 1}`);
-
-const Popout = ({ onClose, onSelectTag, onSubmit }) => {
-  const [nameEntry, setNameEntry] = useState("");
-
-  const handleSelectTag = (tag) => {
-    onSelectTag(tag);
-  };
+  const usertag = "0854oFj8R4PuW0iDbDaQ"; // change this to return the current user
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // send tag data to separate collection tied to user in database
-    onSubmit(nameEntry);
+    console.log(
+      "Tag Created:",
+      usertag,
+      selectedTag,
+      nameEntry,
+      tagColor,
+      selectedIcon
+    );
+    PushTag(usertag, selectedTag, nameEntry, tagColor, selectedIcon);
+
+    //onSubmit(usertag, selectedTag, nameEntry, tagColor, selectedIcon.imageUrl); // Pass selectedIcon to onSubmit
   };
 
   return (
     <div className="popout-container">
-      <div className="popout-content">
+      <div className="popout-content" style={styles.scrollableContainer}>
         <section id="ParentSelector">
           <h2>Set Parent</h2>
-          <TagsScrollable items={TagItems} onSelect={handleSelectTag} />
+          <ul style={{ listStyle: "none", padding: "0" }}>
+            {TagItems.map((tag) => (
+              <li
+                key={tag.id}
+                style={{
+                  ...styles.listItem,
+                  backgroundColor:
+                    selectedTag === tag.id
+                      ? "lightblue"
+                      : hoveredItem === tag.id
+                      ? "lightgray"
+                      : "#242424",
+                }}
+                onClick={() => setSelectedTag(tag.id)}
+                onMouseEnter={() => setHoveredItem(tag.id)}
+                onMouseLeave={() => setHoveredItem(null)}
+              >
+                {tag.id}
+              </li>
+            ))}
+          </ul>
+
+          <div className="icon-selector">
+            {Images.map((image) => (
+              <svg
+                key={image.id}
+                style={{
+                  ...styles.icon,
+                  backgroundColor:
+                    selectedIcon === image.id
+                      ? "lightblue"
+                      : hoveredItem === image.id
+                      ? "lightgray"
+                      : "#242424",
+                }}
+                viewBox="0 0 20 20" // Adjust the viewBox as needed
+                xmlns="http://www.w3.org/2000/svg"
+                alt={`Icon ${image.id}`}
+                className={selectedIcon === image.id ? "selected" : ""}
+                onClick={() => setSelectedIcon(image.id)}
+                onMouseEnter={() => setHoveredItem(image.id)}
+                onMouseLeave={() => setHoveredItem(null)}
+              >
+                <path d="M0 0h24v24H0z" fill="none" />
+                <image xlinkHref={image.imageUrl} width="20" height="20" />
+              </svg>
+            ))}
+          </div>
+          <label htmlFor="tagColor">Tag Color:</label>
+          <input
+            type="color"
+            id="tagColor"
+            value={tagColor}
+            onChange={(e) => setTagColor(e.target.value)}
+          />
         </section>
         <section id="NameCreator">
           <h2>Name</h2>
@@ -80,7 +129,6 @@ const Popout = ({ onClose, onSelectTag, onSubmit }) => {
               value={nameEntry}
               onChange={(e) => setNameEntry(e.target.value)}
             />
-            {/* ZANE PUT YOUR ICON SELECTOR HTML HERE */}
             <button type="submit">Submit</button>
           </form>
         </section>
@@ -92,35 +140,31 @@ const Popout = ({ onClose, onSelectTag, onSubmit }) => {
 
 const PopoutHandler = () => {
   const [isPopoutOpen, setPopoutOpen] = useState(false);
-  const [selectedTag, setSelectedTag] = useState("");
 
   const togglePopout = () => {
     setPopoutOpen(!isPopoutOpen);
   };
 
-  const handleSelectTag = (tag) => {
-    setSelectedTag(tag);
-  };
+  const usertag = "0854oFj8R4PuW0iDbDaQ"; // change this to return the current user
 
-  const usertag = "0854oFj8R4PuW0iDbDaQ"; //change this to return current user
-  const iconColor = "";
-  const iconPath = "";
-  const handleSubmit = (nameEntry) => {
-    // ZANE, send the icon color after nameEntry, and the icon path after that
-    //AFTER ELI ADDS THE METHOD TO CHECK WHAT THE CURRENT USER IS, PASS THAT IN AS WELL
-    console.log("Tag Created:", selectedTag, nameEntry, iconColor, iconPath);
-    PushTag(usertag, selectedTag, nameEntry, iconColor, iconPath);
+  const handleSubmit = (nameEntry, selectedTag, tagColor, selectedIcon) => {
+    console.log(
+      "Tag Created:",
+      selectedTag,
+      nameEntry,
+      tagColor,
+      selectedIcon,
+      usertag
+    );
+    // Modify PushTag to handle the selected icon
+    PushTag(usertag, selectedTag, nameEntry, tagColor, selectedIcon.imageUrl);
     setPopoutOpen(false);
   };
 
   return (
     <div>
       {isPopoutOpen ? (
-        <Popout
-          onClose={() => setPopoutOpen(false)}
-          onSelectTag={handleSelectTag}
-          onSubmit={handleSubmit}
-        />
+        <Popout onClose={() => setPopoutOpen(false)} onSubmit={handleSubmit} />
       ) : (
         <button onClick={togglePopout}>Add Tag</button>
       )}

@@ -53,7 +53,7 @@ function App() {
       return <AcctPage />;
 
     default:
-      return <Credit noteid={null} />;
+      return <Nav />;
   }
 }
 
