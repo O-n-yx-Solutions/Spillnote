@@ -32,7 +32,7 @@ const Nav = () => {
     <div className="navbar">
       <div className="header">
         <div id="img-title">
-          <img src="../public/Logo.svg" alt="Logo" />
+          <img src="/Logo.svg" alt="Logo" />
           <div className="title">Spillnote</div>
         </div>
         <div id="account">
