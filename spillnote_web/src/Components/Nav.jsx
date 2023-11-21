@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import YourComponent from "./TagCreator";
+import PopoutHandler from "./TagCreator";
 const navigationData = [
   {
     id: 1,
@@ -31,9 +31,9 @@ const Nav = () => {
   return (
     <div className="navbar">
       <div className="header">
-        <img src="../public/Logo.svg" alt="Logo" />
+        <img src="/Logo.svg" alt="Logo" />
         <div className="title">Spillnote</div>
-        <YourComponent />
+        <PopoutHandler />
         <div className="settings-wheel">⚙️</div>
       </div>
 

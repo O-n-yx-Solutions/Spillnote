@@ -10,8 +10,8 @@ import Explore from "./Components/Explore";
 export default function App() {
   return (
     <View style={styles.container}>
-      <LoginPage />
-      <StatusBar style="auto" />
+      {/* <LoginPage /> */}
+      {/* <StatusBar style="auto" /> */}
       <Explore/>
     </View>
   );
