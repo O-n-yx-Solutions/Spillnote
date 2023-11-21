@@ -11,7 +11,7 @@ import Choices from "./Choices";
 import SettingsPage from "./Components/SettingsPage";
 import Explore from "./Explore";
 import RegUser from "./Components/scripts/RegUser.js";
-import Credit from "./Create.jsx";
+import Credit from "./Credit.jsx";
 import AcctPage from "./Components/AcctPage.jsx";
 // import Nav from "./Nav";
 // import SettingsPage from "./Components/settingsPage.jsx";
@@ -31,7 +31,7 @@ function App() {
       return <Nav />;
       break;
     case "create":
-      return <Create />;
+      return <Credit />;
       break;
     case "login_page":
       return <LoginPage />;
@@ -53,8 +53,7 @@ function App() {
       return <AcctPage />;
 
     default:
-      return <Nav />;
-    //Credit noteid={null} /</>
+      return <Credit noteid={null} />;
   }
 }
 
