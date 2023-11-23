@@ -2,19 +2,19 @@ import { collection, addDoc } from "firebase/firestore";
 import db from "../../firebase.js";
 
 export default async function PushTag(
-  usern,
-  parentli,
-  tagname,
-  icocol,
-  icopath
+  usertag,
+  selectedTag,
+  nameEntry,
+  tagColor,
+  selectionIcon
 ) {
   const entry = [
     {
-      iconcolor: icocol,
-      iconpath: icopath,
-      name: tagname,
-      parents: parentli,
-      user: usern,
+      user: usertag,
+      name: nameEntry,
+      parents: selectedTag,
+      iconcolor: tagColor,
+      iconpath: selectionIcon,
     },
   ];
   try {

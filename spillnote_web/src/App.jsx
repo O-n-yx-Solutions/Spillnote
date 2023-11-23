@@ -1,13 +1,9 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-// import reactLogo from "./assets/react.svg";
-// import viteLogo from "/vite.svg";
 import { onSnapshot, collection } from "firebase/firestore";
 import "./App.css";
 import getFirestore from "./Firebase";
 import { handleEdit, handleNew, handleDelete, handleQueryDelete } from "./util";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import RegisterPage from "./Components/RegPage";
 import LoginPage from "./Components/LoginPage";
 import Nav from "./Components/Nav.jsx";
@@ -15,7 +11,11 @@ import Choices from "./Choices";
 import SettingsPage from "./Components/SettingsPage";
 import Explore from "./Explore";
 import RegUser from "./Components/scripts/RegUser.js";
-import Credit from "./Create.jsx";
+import Credit from "./Credit.jsx";
+import AcctPage from "./Components/AcctPage.jsx";
+// import Nav from "./Nav";
+// import SettingsPage from "./Components/settingsPage.jsx";
+// import Explore from "./Explore";
 
 function App() {
   const [action, setAction] = useState(" ");
@@ -31,7 +31,7 @@ function App() {
       return <Nav />;
       break;
     case "create":
-      return <Create />;
+      return <Credit />;
       break;
     case "login_page":
       return <LoginPage />;
@@ -49,8 +49,11 @@ function App() {
       RegUser();
       return <Choices />;
 
+    case "acct_page":
+      return <AcctPage />;
+
     default:
-      return <Credit noteid={"OlUcXegtRtMlPZCt9Jnb"} />;
+      return <Nav />;
   }
 }
 

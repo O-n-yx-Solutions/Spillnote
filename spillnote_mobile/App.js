@@ -6,13 +6,14 @@ import { StatusBar } from "expo-status-bar";
 import Nav from "./Components/Nav";
 // Explore imports
 import Explore from "./Components/Explore";
+import NoteCreate from "./Components/noteCreate";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <LoginPage />
+      <NoteCreate />
       <StatusBar style="auto" />
-      <Explore/>
+      <Nav />
     </View>
   );
 }
