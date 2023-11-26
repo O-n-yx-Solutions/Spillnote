@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './App.css'; // Import your CSS file with gallery styles
+import './Small.css'; // Import your CSS file with gallery styles
+import "./Large.css";
 
 const Gallery = () => {
   const [galleryItems, setGalleryItems] = useState([

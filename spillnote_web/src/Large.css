@@ -1,0 +1,39 @@
+@media only screen and (min-width: 30em)
+{
+    /*****************************
+        Header 
+    *****************************/
+    .header
+    {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    #account
+    {
+        justify-self: right;
+        text-align: right;
+    }
+    /*****************************
+        Navigation 
+    *****************************/
+    .dynamic-list
+    {
+        display: flex;
+    }
+    .dynamic-list li
+    {
+        margin: 0 1em;
+    }
+    .dynamic-list div
+    {
+        justify-self: right;
+    }
+    /*****************************
+        Add Tag Pop-out
+    *****************************/
+    .popout-container
+    {
+        top: auto;
+        left: 2em;
+    }
+}

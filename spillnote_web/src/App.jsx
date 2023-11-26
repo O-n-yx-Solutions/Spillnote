@@ -1,8 +1,9 @@
-import "./App.css";
+import "./Small.css";
+import "./Large.css";
 import { useEffect, useState } from "react";
 import { onSnapshot, collection } from "firebase/firestore";
-import "./App.css";
-import getFirestore from "./Firebase";
+
+//import getFirestore from "./Firebase";
 import { handleEdit, handleNew, handleDelete, handleQueryDelete } from "./util";
 import RegisterPage from "./Components/RegPage";
 import LoginPage from "./Components/LoginPage";
@@ -52,6 +53,10 @@ function App() {
     case "acct_page":
       return <AcctPage />;
 
+    case "recent_link":
+      
+    case "fav_link":
+      
     default:
       return <Nav />;
   }
