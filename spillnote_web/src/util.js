@@ -9,10 +9,11 @@ import {
   getDocs,
   serverTimestamp,
   updateDoc,
+  getFirestore,
 } from "firebase/firestore";
-import getFirestore from "./Firebase";
-import getAuth from "./Firebase";
-
+//import { db } from "./firebase";
+import { useAuth } from "./firebase";
+import { useEffect, useState } from "react";
 
 export const handleNew = async () => {
   const collectionRef = collection(getFirestore, "notes"); // leave same
@@ -20,7 +21,7 @@ export const handleNew = async () => {
   const textContent = prompt("Enter a note");
   // FUntion to check on edit of texty area that sets the variables value and payload
   const payload = { className: textContent, timestamp: serverTimestamp() };
-}
+};
 // same here ^^^
 export const handleEdit = async (id) => {
   const docRef = doc(getFirestore, "notes", id); // leave same
@@ -53,3 +54,32 @@ export const handleQueryDelete = async () => {
     await deleteDoc(docRef);
   });
 };
+
+export const fetchNotes = async (userEmail) => {
+  try {
+    if (userEmail) {
+      const q = query(collection(db, "notes"), where("email", "==", userEmail));
+      const querySnapshot = await getDocs(q);
+
+      const notes = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      console.log("Fetched Notes:", notes); // Log all the results
+
+      return querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+    } else {
+      console.error("User email is undefined");
+      return [];
+    }
+  } catch (error) {
+    console.error("Error fetching notes:", error);
+    throw error;
+  }
+};
+
+export const db = getFirestore();

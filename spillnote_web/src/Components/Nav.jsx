@@ -53,7 +53,9 @@ const Nav = () => {
 
       <ul className="dynamic-list">
         <PopoutHandler />
-        <li>Recent</li>
+        <a id="myaccount-link" href="?action=explore_link">
+          Recent
+        </a>
         <li>Favorites</li>
         {navigationData.map((section) => (
           <li key={section.id}>
