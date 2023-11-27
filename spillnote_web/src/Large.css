@@ -1,39 +1,51 @@
 @media only screen and (min-width: 30em)
 {
+    #root
+    {
+        height: 50em;
+    }
+    .navbar
+    {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        height: 100%;
+        max-width: 18em;
+    }
+
     /*****************************
         Header 
     *****************************/
-    .header
-    {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
     #account
     {
-        justify-self: right;
-        text-align: right;
-    }
+        justify-self: left;
+        text-align: left;
+    } 
     /*****************************
         Navigation 
     *****************************/
-    .dynamic-list
+     .dynamic-list
     {
-        display: flex;
+        position: relative;
+        display: block;
+        top: 200px;
+        margin: 0 2em;
     }
     .dynamic-list li
     {
         margin: 0 1em;
+        text-align: left;
     }
     .dynamic-list div
     {
-        justify-self: right;
-    }
+        text-align: left;
+    } 
     /*****************************
         Add Tag Pop-out
     *****************************/
-    .popout-container
+     .popout-container
     {
-        top: auto;
+        top: -22em;
         left: 2em;
-    }
+    } 
 }
