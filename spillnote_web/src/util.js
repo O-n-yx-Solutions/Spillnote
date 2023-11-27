@@ -54,11 +54,11 @@ export const handleQueryDelete = async () => {
   });
 };
 
-export const fetchNotes = async (userEmail) => {
+export const fetchNotes = (userEmail) => {
   const db = getFirestore();
   try {
     const q = query(collection(db, "notes"), where("email", "==", userEmail));
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = getDocs(q);
 
     return querySnapshot.docs.map((doc) => ({
       id: doc.id,
@@ -69,3 +69,5 @@ export const fetchNotes = async (userEmail) => {
     throw error;
   }
 };
+
+export default fetchNotes;

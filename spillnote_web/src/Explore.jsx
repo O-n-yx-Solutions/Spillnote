@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css"; // Import your CSS file with gallery styles
 import Nav from "./Components/Nav";
-import fetchNotes from "./firebase";
+import fetchNotes from "./util";
 import { useAuth } from "./firebase";
 
 const Gallery = () => {
@@ -117,7 +117,7 @@ const Gallery = () => {
   useEffect(() => {
     const getNotes = async () => {
       try {
-        const notesData = await fetchNotes(authUser);
+        const notesData = fetchNotes(authUser);
         setNotes(notesData);
       } catch (error) {
         console.error("Error getting notes:", error);
