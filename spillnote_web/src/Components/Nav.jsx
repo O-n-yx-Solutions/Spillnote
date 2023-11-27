@@ -36,22 +36,18 @@ const Nav = () => {
           <div className="title">Spillnote</div>
         </div>
         <div id="account">
-          <div className="settings-wheel">
-            <a href="?action=settings_page">⚙️</a>
-          </div>
-          <a id="myaccount-link" href="?action=acct_page">
-            My Account
-          </a>
-          <a id="myaccount-link" href="?action=reg_page">
-            Register
-          </a>
-          <a id="return-home" href="?action=default">
-            Return to Home Page
-          </a>
+          
+          <a id="myaccount-link" href="?action=acct_page">My Account</a>
+          <a id="myaccount-link" href="?action=reg_page">Register</a>
+          <a id="return-home" href="?action=default">Return to Home Page</a>
+          <a href="?action=settings_page">Settings</a>
         </div>
       </div>
 
       <ul className="dynamic-list">
+        <li><a href="?action=recent_link">Recent</a></li>
+        <li><a href="?action=fav_link">Favorites</a></li>
+
         <PopoutHandler />
         <a id="myaccount-link" href="?action=explore_link">
           Recent
@@ -65,7 +61,9 @@ const Nav = () => {
               }`}
               onClick={() => toggleExpand(section.id)}
             >
-              {section.title}
+              <a href="#">
+                {section.title}
+              </a>
             </div>
             {expanded[section.id] && (
               <ul className="child-list">
@@ -73,9 +71,10 @@ const Nav = () => {
                   <li key={child.id}>{child.title}</li>
                 ))}
               </ul>
-            )}
+            )} 
           </li>
         ))}
+            <PopoutHandler />
       </ul>
       <div className="statics">
         <ul></ul>

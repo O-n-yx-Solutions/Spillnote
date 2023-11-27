@@ -29,8 +29,7 @@ const Popout = ({ onClose, onSubmit }) => {
 
   const styles = {
     scrollableContainer: {
-      overflowY: "scroll",
-      height: "200px",
+      height: "fit-content",
     },
     listItem: {
       padding: "8px",
@@ -65,7 +64,7 @@ const Popout = ({ onClose, onSubmit }) => {
       <div className="popout-content" style={styles.scrollableContainer}>
         <section id="ParentSelector">
           <h2>Set Parent</h2>
-          <ul style={{ listStyle: "none", padding: "0" }}>
+          <ul style={{ /*listStyle: "none", margin: "0.5em"*/ }}>
             {TagItems.map((tag) => (
               <li
                 key={tag.id}
@@ -95,10 +94,10 @@ const Popout = ({ onClose, onSubmit }) => {
                   ...styles.icon,
                   backgroundColor:
                     selectedIcon === image.id
-                      ? "lightblue"
+                      ? "white"
                       : hoveredItem === image.id
                       ? "lightgray"
-                      : "#242424",
+                      : "#ffffff",
                 }}
                 viewBox="0 0 20 20" // Adjust the viewBox as needed
                 xmlns="http://www.w3.org/2000/svg"
@@ -135,7 +134,7 @@ const Popout = ({ onClose, onSubmit }) => {
           </form>
         </section>
       </div>
-      <button onClick={onClose}>Close</button>
+      <button id="close_btn" onClick={onClose}>Close</button>
     </div>
   );
 };

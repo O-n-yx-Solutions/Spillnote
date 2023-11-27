@@ -1,4 +1,5 @@
-import "./App.css";
+import './Small.css'; // Import your CSS file with gallery styles
+import "./Large.css";
 import Header from "./Common/Header.jsx";
 
 export default function Choices() {

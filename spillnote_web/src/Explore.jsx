@@ -1,3 +1,5 @@
+import './Small.css'; // Import your CSS file with gallery styles
+import "./Large.css";
 import React, { useEffect, useState } from "react";
 import "./App.css"; // Import your CSS file with gallery styles
 import Nav from "./Components/Nav";
