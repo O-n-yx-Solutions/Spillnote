@@ -37,7 +37,13 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from "firebase/auth";
 import { useEffect, useState } from "react";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -50,7 +56,7 @@ const firebaseConfig = {
   projectId: "spillnote-f2023",
   storageBucket: "spillnote-f2023.appspot.com",
   messagingSenderId: "301966407502",
-  appId: "1:301966407502:web:2a4f9075431afc0bf5901f"
+  appId: "1:301966407502:web:2a4f9075431afc0bf5901f",
 };
 
 // Initialize Firebase
@@ -59,27 +65,27 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 
 export function signup(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password);
+  return createUserWithEmailAndPassword(auth, email, password);
 }
 
 export function login(email, password) {
-    return signInWithEmailAndPassword(auth, email, password);
+  return signInWithEmailAndPassword(auth, email, password);
 }
 
-export function logout(){
-    return signOut(auth);
+export function logout() {
+  return signOut(auth);
 }
 
 // Custom Hook
-export function useAuth(){
-    const [ currentUser, setCurrentUser ] = useState();
+export function useAuth() {
+  const [currentUser, setCurrentUser] = useState();
 
-    useEffect(() => {
-        const unsub = onAuthStateChanged(auth, user => setCurrentUser(user));
-        return unsub;
-    },[])
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (user) => setCurrentUser(user));
+    return unsub;
+  }, []);
 
-    return currentUser;
+  return currentUser;
 }
 
 export default db;

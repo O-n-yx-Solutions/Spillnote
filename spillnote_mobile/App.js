@@ -11,9 +11,9 @@ import NoteCreate from "./Components/noteCreate";
 export default function App() {
   return (
     <View style={styles.container}>
-      <NoteCreate />
       <StatusBar style="auto" />
       <Nav />
+      <NoteCreate />
     </View>
   );
 }

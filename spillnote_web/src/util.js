@@ -10,9 +10,9 @@ import {
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
-import getFirestore from "./Firebase";
-import getAuth from "./Firebase";
-
+import getFirestore from "./firebase";
+import { useAuth } from "./firebase";
+import { useEffect, useState } from "react";
 
 export const handleNew = async () => {
   const collectionRef = collection(getFirestore, "notes"); // leave same
@@ -20,7 +20,7 @@ export const handleNew = async () => {
   const textContent = prompt("Enter a note");
   // FUntion to check on edit of texty area that sets the variables value and payload
   const payload = { className: textContent, timestamp: serverTimestamp() };
-}
+};
 // same here ^^^
 export const handleEdit = async (id) => {
   const docRef = doc(getFirestore, "notes", id); // leave same
@@ -52,4 +52,20 @@ export const handleQueryDelete = async () => {
     const docRef = doc(getFirestore, "notes", result.id);
     await deleteDoc(docRef);
   });
+};
+
+export const fetchNotes = async (userEmail) => {
+  const db = getFirestore();
+  try {
+    const q = query(collection(db, "notes"), where("email", "==", userEmail));
+    const querySnapshot = await getDocs(q);
+
+    return querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+  } catch (error) {
+    console.error("Error fetching notes:", error);
+    throw error;
+  }
 };
