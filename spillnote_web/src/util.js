@@ -61,6 +61,13 @@ export const fetchNotes = async (userEmail) => {
       const q = query(collection(db, "notes"), where("email", "==", userEmail));
       const querySnapshot = await getDocs(q);
 
+      const notes = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      console.log("Fetched Notes:", notes); // Log all the results
+
       return querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
