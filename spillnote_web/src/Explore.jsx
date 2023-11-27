@@ -11,6 +11,7 @@ const Gallery = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [editIndex, setEditIndex] = useState(null); // Track the index of the item being edited
   const [editedValue, setEditedValue] = useState(""); // Local state for the edited value
+  const [filteredItems, setFilteredItems] = useState([]);
 
   const authUser = "bob@gmail.com";
   const userEmail = authUser ? authUser : "bob@gmail.com";

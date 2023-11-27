@@ -57,13 +57,18 @@ export const handleQueryDelete = async () => {
 
 export const fetchNotes = async (userEmail) => {
   try {
-    const q = query(collection(db, "notes"), where("email", "==", userEmail));
-    const querySnapshot = await getDocs(q);
+    if (userEmail) {
+      const q = query(collection(db, "notes"), where("email", "==", userEmail));
+      const querySnapshot = await getDocs(q);
 
-    return querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
+      return querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+    } else {
+      console.error("User email is undefined");
+      return [];
+    }
   } catch (error) {
     console.error("Error fetching notes:", error);
     throw error;
