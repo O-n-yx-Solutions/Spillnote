@@ -5,15 +5,15 @@ import fetchNotes from "./firebase";
 import { useAuth } from "./firebase";
 
 const Gallery = () => {
-  //const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState([]);
   const [sortOrder, setSortOrder] = useState("asc");
   const [sortBy, setSortBy] = useState("default"); // 'default' or 'recentlyAdded'
   const [searchQuery, setSearchQuery] = useState("");
   const [editIndex, setEditIndex] = useState(null); // Track the index of the item being edited
   const [editedValue, setEditedValue] = useState(""); // Local state for the edited value
 
-  // const authUser = "yellow";
-  // const userEmail = authUser ? authUser : "bob@gmail.com";
+  const authUser = "bob@gmail.com";
+  const userEmail = authUser ? authUser : "bob@gmail.com";
 
   const [galleryItems, setGalleryItems] = useState([
     { id: 1, value: "Item 1" },
@@ -114,18 +114,18 @@ const Gallery = () => {
     setEditedValue(e.target.value);
   };
 
-  // useEffect(() => {
-  //   const getNotes = async () => {
-  //     try {
-  //       const notesData = await fetchNotes(authUser);
-  //       setNotes(notesData);
-  //     } catch (error) {
-  //       console.error("Error getting notes:", error);
-  //     }
-  //   };
+  useEffect(() => {
+    const getNotes = async () => {
+      try {
+        const notesData = await fetchNotes(authUser);
+        setNotes(notesData);
+      } catch (error) {
+        console.error("Error getting notes:", error);
+      }
+    };
 
-  //   getNotes();
-  // }, [authUser]);
+    getNotes();
+  }, [authUser]);
 
   const filteredItems = galleryItems.filter((item) =>
     item.value.toLowerCase().includes(searchQuery.toLowerCase())
