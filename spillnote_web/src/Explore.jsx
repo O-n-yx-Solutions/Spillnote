@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./App.css"; // Import your CSS file with gallery styles
 import Nav from "./Components/Nav";
-import fetchNotes from "./util";
+import { fetchNotes, db } from "./util";
 import { useAuth } from "./firebase";
 
 const Gallery = () => {
@@ -114,22 +114,18 @@ const Gallery = () => {
     setEditedValue(e.target.value);
   };
 
-  useEffect(() => {
-    const getNotes = async () => {
-      try {
-        const notesData = fetchNotes(authUser);
-        setNotes(notesData);
-      } catch (error) {
-        console.error("Error getting notes:", error);
-      }
-    };
+  const getAndSetNotes = async () => {
+    try {
+      const fetchedNotes = await fetchNotes(); // Assuming fetchNotes returns a Promise
+      setNotes(fetchedNotes);
+    } catch (error) {
+      console.error("Error fetching notes:", error);
+    }
+  };
 
-    getNotes();
-  }, [authUser]);
-
-  const filteredItems = galleryItems.filter((item) =>
-    item.value.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // Call the function to fetch and set notes (you can call it based on some user interaction or other events)
+  // For simplicity, calling it when the component renders
+  getAndSetNotes();
 
   return (
     <div style={styles.container}>
