@@ -132,7 +132,9 @@ const Gallery = () => {
 
   return (
     <div style={styles.container}>
-      <div style={styles.navContainer}></div>
+      <div style={styles.navContainer}>
+        <Nav />
+      </div>
       <div style={styles.contentContainer}>
         <div>
           <input
