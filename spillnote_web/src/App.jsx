@@ -58,7 +58,7 @@ function App() {
     case "fav_link":
       
     default:
-      return <Nav />;
+      return <Explore />;
   }
 }
 

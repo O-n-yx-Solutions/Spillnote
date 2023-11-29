@@ -48,11 +48,6 @@ const Nav = () => {
         <li><a href="?action=recent_link">Recent</a></li>
         <li><a href="?action=fav_link">Favorites</a></li>
 
-        <PopoutHandler />
-        <a id="myaccount-link" href="?action=explore_link">
-          Recent
-        </a>
-        <li>Favorites</li>
         {navigationData.map((section) => (
           <li key={section.id}>
             <div

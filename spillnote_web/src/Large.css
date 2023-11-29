@@ -1,16 +1,26 @@
-@media only screen and (min-width: 30em)
+@media only screen and (min-width: 55em)
 {
     #root
     {
         height: 50em;
     }
+
+    /*****************************
+        Explore Page 
+    *****************************/
+    .explore
+    {
+        display: flex;
+    }
     .navbar
     {
-        display: grid;
+        display: flex;
+        flex-direction: column;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
         height: 100%;
         max-width: 18em;
+        padding: 0.5em;
     }
 
     /*****************************
@@ -20,7 +30,13 @@
     {
         justify-self: left;
         text-align: left;
+        padding: 0;
+        margin: 0.5em 0.5em;
     } 
+    #img-title 
+    {
+        display: block;
+    }
     /*****************************
         Navigation 
     *****************************/
@@ -28,18 +44,25 @@
     {
         position: relative;
         display: block;
-        top: 200px;
-        margin: 0 2em;
+        padding: 0;
+        margin: 0.5em 0;
+        margin-top: 10em;
+        align-self: flex-end;
+        text-align: left;
     }
     .dynamic-list li
     {
-        margin: 0 1em;
+        margin: 0 0.5em;
         text-align: left;
     }
-    .dynamic-list div
+    .dynamic-list a
     {
         text-align: left;
-    } 
+    }
+    .statics
+    {
+        grid-column: 1/3;
+    }
     /*****************************
         Add Tag Pop-out
     *****************************/

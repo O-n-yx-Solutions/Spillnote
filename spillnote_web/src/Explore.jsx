@@ -1,7 +1,6 @@
 import './Small.css'; // Import your CSS file with gallery styles
 import "./Large.css";
 import React, { useEffect, useState } from "react";
-import "./App.css"; // Import your CSS file with gallery styles
 import Nav from "./Components/Nav";
 import { fetchNotes, db } from "./util";
 import { useAuth } from "./firebase";
@@ -25,14 +24,12 @@ const Gallery = () => {
   ]);
   const styles = {
     container: {
-      display: "flex",
+
     },
     navContainer: {
-      width: "20%",
       position: "sticky",
       top: 0,
       padding: "20px",
-      backgroundColor: "#f5f5f5",
     },
     contentContainer: {
       width: "80%",
@@ -131,8 +128,8 @@ const Gallery = () => {
   getAndSetNotes();
 
   return (
-    <div style={styles.container}>
-      <div style={styles.navContainer}></div>
+    <div className='explore'>
+      <div style={styles.navContainer}>< Nav /></div>
       <div style={styles.contentContainer}>
         <div>
           <input

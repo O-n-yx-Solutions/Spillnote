@@ -204,8 +204,8 @@ form
 .dynamic-list
 {
   display: grid;
-  padding: 0;
-  text-align: center;
+  padding: 1em;
+  text-align: left;
 }
 .dynamic-list li
 {
