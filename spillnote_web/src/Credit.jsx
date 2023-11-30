@@ -1,5 +1,5 @@
 import { onSnapshot, collection } from "firebase/firestore";
-import getFirestore from "./Firebase";
+import getFirestore from "./firebase";
 import { useEffect, useState } from "react";
 import { handleEdit, handleNew, handleDelete, handleQueryDelete } from "./util";
 
