@@ -1,6 +1,4 @@
 import React from "react";
-import Sun from "../../public/settingsIcons/Sun.svg?react"
-import Moon from "../../public/settingsIcons/Moon.svg?react"
 // import Sun from "./images/Sun.svg?react";
 // import Moon  from "./images/Moon.svg?react";
 import "./styles/DarkMode.css";
@@ -33,8 +31,8 @@ export default function SettingsPage()
                 onChange={toggleTheme}
             />
             <label className='dark_mode_label' htmlFor='darkmode-toggle'>
-                <Sun />
-                <Moon />
+                <img src='/settingsIcons/Sun.svg' alt="Sun"/>
+                <img src='/settingsIcons/Moon.svg' alt="Moon"/>
             </label>
         </div>
     );
