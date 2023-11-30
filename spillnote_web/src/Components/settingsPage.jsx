@@ -1,6 +1,8 @@
 import React from "react";
-import Sun from "./images/Sun.svg?react";
-import Moon  from "./images/Moon.svg?react";
+import Sun from "../../public/settingsIcons/Sun"
+import Moon from "../../public/settingsIcons/Moon"
+// import Sun from "./images/Sun.svg?react";
+// import Moon  from "./images/Moon.svg?react";
 import "./styles/DarkMode.css";
 import Header from "../Common/Header.jsx";
 
