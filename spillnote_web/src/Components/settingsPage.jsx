@@ -4,8 +4,7 @@ import React from "react";
 import "./styles/DarkMode.css";
 // import Header from "../Common/Header.jsx";
 
-export default function SettingsPage()
-{
+const SettingsPage = () => {
     
         const setDarkMode = () => 
         {
@@ -45,3 +44,4 @@ export default function SettingsPage()
     );
 };
    
+export default SettingsPage;
