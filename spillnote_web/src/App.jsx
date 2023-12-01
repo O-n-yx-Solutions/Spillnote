@@ -9,7 +9,7 @@ import RegisterPage from "./Components/RegPage";
 import LoginPage from "./Components/LoginPage";
 import Nav from "./Components/Nav.jsx";
 import Choices from "./Choices";
-import SettingsPage from "./Components/SettingsPage.jsx";
+// import SettingsPage from "./Components/SettingsPage.jsx";
 import Explore from "./Explore";
 import RegUser from "./Components/scripts/RegUser.js";
 import Credit from "./Credit.jsx";
