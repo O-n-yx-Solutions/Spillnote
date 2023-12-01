@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     appId: "1:301966407502:web:2a4f9075431afc0bf5901f",
   };
-  firebase.initializeApp(firebaseConfig);
 
   const openAuthPopup = () => {
     // Create a new window for authentication
