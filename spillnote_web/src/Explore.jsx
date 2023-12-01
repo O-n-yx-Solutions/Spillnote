@@ -119,8 +119,9 @@ const Gallery = () => {
 
   const getAndSetNotes = async () => {
     try {
-      const fetchedNotes = await fetchNotes(userEmail); // Assuming fetchNotes returns a Promise
-      setNotes(fetchedNotes);
+      const fetchedNotes = {}; //await fetchNotes(userEmail); // Assuming fetchNotes returns a Promise
+      //setNotes(fetchedNotes);
+      console.log("loop");
     } catch (error) {
       console.error("Error fetching notes:", error);
     }
