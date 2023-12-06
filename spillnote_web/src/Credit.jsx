@@ -2,6 +2,7 @@ import { onSnapshot, collection } from "firebase/firestore";
 import getFirestore from "./firebase";
 import { useEffect, useState } from "react";
 import { handleEdit, handleNew, handleDelete, handleQueryDelete } from "./util";
+import TextEditor from "./TextEditor";
 
 export default function Credit(noteid) {
   if (noteid != null) {
@@ -16,7 +17,7 @@ export default function Credit(noteid) {
     }
   }
 
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
 
   const handleInputChange = (event) => {
     setText(event.target.value);
@@ -63,8 +64,5 @@ export default function Credit(noteid) {
   //   );
   // }
 
-
-  return (
-    <textarea onChange={handleInputChange}></textarea>
-  );
+  return <TextEditor />;
 }
