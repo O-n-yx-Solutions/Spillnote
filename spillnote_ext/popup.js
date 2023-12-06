@@ -57,4 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Attach click event to the "Account" button
   document.getElementById("account").addEventListener("click", openAuthPopup);
-});
+  document.getElementById("newNoteButton").addEventListener("click", function () {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, { action: "handleNew" });
+  });
