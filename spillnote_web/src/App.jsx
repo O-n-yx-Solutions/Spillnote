@@ -1,35 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./Small.css";
+import "./Large.css";
+import { useEffect, useState } from "react";
+import { onSnapshot, collection } from "firebase/firestore";
+
+//import getFirestore from "./Firebase";
+import { handleEdit, handleNew, handleDelete, handleQueryDelete } from "./util";
+import RegisterPage from "./Components/RegPage";
+import LoginPage from "./Components/LoginPage";
+import Nav from "./Components/Nav.jsx";
+import Choices from "./Choices";
+import SettingsPage from "./Components/SettingsPage.jsx";
+import Explore from "./Explore";
+import RegUser from "./Components/scripts/RegUser.js";
+import Credit from "./Credit.jsx";
+import AcctPage from "./Components/AcctPage.jsx";
+// import Nav from "./Nav";
+// import SettingsPage from "./Components/settingsPage.jsx";
+// import Explore from "./Explore";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [action, setAction] = useState(" ");
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  useEffect(() => {
+    const urlSearchString = window.location.search;
+    const params = new URLSearchParams(urlSearchString);
+    setAction(params.get("action"));
+  }, []);
+
+  switch (action) {
+    case "nav":
+      return <Nav />;
+      break;
+    case "create":
+      return <Credit />;
+      break;
+    case "login_page":
+      return <LoginPage />;
+
+    case "reg_page":
+      return <RegisterPage />;
+
+    case "settings_page":
+      return <SettingsPage />;
+
+    case "explore_link":
+      return <Explore />;
+
+    case "reg_user":
+      RegUser();
+      return <Choices />;
+
+    case "acct_page":
+      return <AcctPage />;
+
+    case "recent_link":
+      
+    case "fav_link":
+      
+    default:
+      return <Nav />;
+  }
 }
 
-export default App
+//for testing database interactions
+export default App;

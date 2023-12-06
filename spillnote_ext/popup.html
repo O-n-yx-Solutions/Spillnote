@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      button {
+        margin: 5px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      img {
+        margin-right: 5px;
+        width: 16px; /* Adjust the width as needed */
+        height: 16px; /* Adjust the height as needed */
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js"></script>
+    <button id="save">
+      <img src="./images/save.svg" alt="Save" />
+      Save Page
+    </button>
+    <button id="related">
+      <img src="./images/related.svg" alt="Related" />
+      Related Notes
+    </button>
+    <button id="create">
+      <img src="./images/create-svgrepo-com(1).svg" alt="Create" />
+      Create Note
+    </button>
+    <button id="account">
+      <img src="./images/account.svg" alt="Account" />
+      Account
+    </button>
+    <div id="firebase-auth-content">
+      <!-- Include other Firebase services if needed -->
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
