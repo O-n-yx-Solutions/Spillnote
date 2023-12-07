@@ -1,18 +1,22 @@
-import { onSnapshot, collection } from "firebase/firestore";
-import "./App.css";
-import getFirestore from "./Firebase";
+import "./Small.css";
+import "./Large.css";
 import { useEffect, useState } from "react";
+import { onSnapshot, collection } from "firebase/firestore";
+
+//import getFirestore from "./Firebase";
 import { handleEdit, handleNew, handleDelete, handleQueryDelete } from "./util";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import RegisterPage from "./Components/RegPage";
 import LoginPage from "./Components/LoginPage";
 import Nav from "./Components/Nav.jsx";
 import Choices from "./Choices";
-import SettingsPage from "./Components/SettingsPage";
+import SettingsPage from "./Components/SettingsPage.jsx";
 import Explore from "./Explore";
 import RegUser from "./Components/scripts/RegUser.js";
-
+import Credit from "./Credit.jsx";
+import AcctPage from "./Components/AcctPage.jsx";
+// import Nav from "./Nav";
+// import SettingsPage from "./Components/settingsPage.jsx";
+// import Explore from "./Explore";
 
 function App() {
   const [action, setAction] = useState(" ");
@@ -26,6 +30,9 @@ function App() {
   switch (action) {
     case "nav":
       return <Nav />;
+      break;
+    case "create":
+      return <Credit />;
       break;
     case "login_page":
       return <LoginPage />;
@@ -43,53 +50,17 @@ function App() {
       RegUser();
       return <Choices />;
 
+    case "acct_page":
+      return <AcctPage />;
+
+    case "recent_link":
+      
+    case "fav_link":
+      
     default:
       return <Nav />;
   }
 }
 
-/*function App() {
-  const [notes, setNotes] = useState([
-    { class: "Fetching Notes", id: "initial" },
-  ]);
-  console.log(notes);
-  useEffect(
-    () =>
-      onSnapshot(collection(getFirestore, "notes"), (snapshot) =>
-        setNotes(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-      ),
-    []
-  );
-
-  return (
-    <div>
-      <Explore/>
-    <div className="root">
-      <button className="className" onClick={handleNew}>
-        Submit
-      </button>
-      <button className="className" onClick={handleQueryDelete}>
-        Delete
-      </button>
-      <ul>
-        {notes.map((note) => (
-          <li key={note.id}>
-            <textarea
-              onClick={() => handleEdit(note.id)}
-              cols="20"
-              rows="15"
-              placeholder={note.class}
-            ></textarea>
-            <a onClick={() => handleEdit(note.id)}>Edit</a>
-            <button className="delete" onClick={() => handleDelete(note.id)}>
-              delete
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-*/
 //for testing database interactions
 export default App;

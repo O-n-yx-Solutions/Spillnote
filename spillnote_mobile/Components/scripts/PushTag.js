@@ -1,7 +1,7 @@
 import { collection, addDoc } from "firebase/firestore";
 import db from "../../firebase.js";
 
-export default async function PushTag(
+export async function PushTag(
   usertag,
   selectedTag,
   nameEntry,

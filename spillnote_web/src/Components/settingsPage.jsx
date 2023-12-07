@@ -2,6 +2,7 @@ import React from "react";
 import Sun from "./images/Sun.svg?react";
 import Moon  from "./images/Moon.svg?react";
 import "./styles/DarkMode.css";
+import Header from "../Common/Header.jsx";
 
 export default function SettingsPage()
 {
@@ -21,7 +22,7 @@ export default function SettingsPage()
         }
     return (
         <div className='dark_mode'>
-            <a href="default">Return to Choices</a>
+            <Header />
             <h1>Settings</h1>
             <input
                 className='dark_mode_input'

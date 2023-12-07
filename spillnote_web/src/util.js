@@ -9,25 +9,28 @@ import {
   getDocs,
   serverTimestamp,
   updateDoc,
+  getFirestore,
 } from "firebase/firestore";
-//import getFirestore from "./Firebase";
+//import { db } from "./firebase";
+import { useAuth } from "./firebase";
+import { useEffect, useState } from "react";
 
 export const handleNew = async () => {
-  const value = prompt("Enter a note");
-
-  const collectionRef = collection(getFirestore, "notes");
-  const payload = { className: value, timestamp: serverTimestamp() };
-
-  await addDoc(collectionRef, payload);
+  const collectionRef = collection(getFirestore, "notes"); // leave same
+  // HTML or React text area element
+  const textContent = prompt("Enter a note");
+  // FUntion to check on edit of texty area that sets the variables value and payload
+  const payload = { className: textContent, timestamp: serverTimestamp() };
 };
-
+// same here ^^^
 export const handleEdit = async (id) => {
-  const value = prompt("Edit note");
+  const docRef = doc(getFirestore, "notes", id); // leave same
 
-  const docRef = doc(getFirestore, "notes", id);
-  const payload = { className: value, timestamp: serverTimestamp() };
+  const textContent = prompt("Edit note");
 
-  await updateDoc(docRef, payload);
+  const payload = { className: textContent, timestamp: serverTimestamp() };
+
+  updateDoc(docRef, payload);
 };
 
 export const handleDelete = async (id) => {
@@ -51,3 +54,32 @@ export const handleQueryDelete = async () => {
     await deleteDoc(docRef);
   });
 };
+
+export const fetchNotes = async (userEmail) => {
+  try {
+    if (userEmail) {
+      const q = query(collection(db, "notes"), where("email", "==", userEmail));
+      const querySnapshot = await getDocs(q);
+
+      const notes = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      console.log("Fetched Notes:", notes); // Log all the results
+
+      return querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+    } else {
+      console.error("User email is undefined");
+      return [];
+    }
+  } catch (error) {
+    console.error("Error fetching notes:", error);
+    throw error;
+  }
+};
+
+export const db = getFirestore();

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' https://www.gstatic.com;"
+    />
+    <style>
+      body {
+        height: fit-content;
+        width: 500px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: #343541;
+      }
+
+      button {
+        margin: 5px;
+        align-items: center;
+        background-color: #343541;
+        padding: 10px;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+
+      img {
+        margin-right: 5px;
+        width: 16px;
+        height: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="save">
+      <img src="./images/save.svg" alt="Save" />
+      Save Page
+    </button>
+    <button id="related">
+      <img src="./images/related.svg" alt="Related" />
+      Related Notes
+    </button>
+    <button id="create">
+      <img src="./images/create-svgrepo-com(1).svg" alt="Create" />
+      Create Note
+    </button>
+    <button id="account">
+      <img src="./images/account.svg" alt="Account" />
+      Account
+    </button>
+  </body>
+  <script src="popup.js"></script>
+</html>

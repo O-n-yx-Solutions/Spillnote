@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import YourComponent from "./TagCreator";
+import PopoutHandler from "./TagCreator";
 const navigationData = [
   {
     id: 1,
@@ -31,13 +31,29 @@ const Nav = () => {
   return (
     <div className="navbar">
       <div className="header">
-        <img src="../public/Logo.svg" alt="Logo" />
-        <div className="title">Spillnote</div>
-        <YourComponent />
-        <div className="settings-wheel">⚙️</div>
+        <div id="img-title">
+          <img src="/Logo.svg" alt="Logo" />
+          <div className="title">Spillnote</div>
+        </div>
+        <div id="account">
+          <a id="myaccount-link" href="?action=acct_page">
+            My Account
+          </a>
+          <a id="myaccount-link" href="?action=reg_page">
+            Register
+          </a>
+          <a id="return-home" href="?action=default">
+            Return to Home Page
+          </a>
+          <a href="?action=settings_page">Settings</a>
+        </div>
       </div>
 
       <ul className="dynamic-list">
+        <a id="myaccount-link" href="?action=explore_link">
+          Recent
+        </a>
+        <li>Favorites</li>
         {navigationData.map((section) => (
           <li key={section.id}>
             <div
@@ -46,7 +62,7 @@ const Nav = () => {
               }`}
               onClick={() => toggleExpand(section.id)}
             >
-              {section.title}
+              <a href="#">{section.title}</a>
             </div>
             {expanded[section.id] && (
               <ul className="child-list">
@@ -57,12 +73,10 @@ const Nav = () => {
             )}
           </li>
         ))}
+        <PopoutHandler />
       </ul>
       <div className="statics">
-        <ul>
-          <li>Recent</li>
-          <li>Favorites</li>
-        </ul>
+        <ul></ul>
       </div>
     </div>
   );
