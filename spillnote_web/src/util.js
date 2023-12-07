@@ -11,6 +11,7 @@ import {
   updateDoc,
   getFirestore,
 } from "firebase/firestore";
+import TextEditor from "./TextEditor";
 //import { db } from "./firebase";
 import { useAuth } from "./firebase";
 import { useEffect, useState } from "react";
@@ -24,7 +25,9 @@ export const handleNew = async () => {
 };
 // same here ^^^
 export const handleEdit = async (id) => {
-  const docRef = doc(getFirestore, "notes", id); // leave same
+  const docRef = doc(db, "notes", id); // leave same
+  console.log(`DOC STUFF: ${docRef.notes}`);
+  console.log("Hello there");
 
   const textContent = prompt("Edit note");
 

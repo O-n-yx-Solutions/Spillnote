@@ -16,7 +16,6 @@ import Credit from "./Credit.jsx";
 import AcctPage from "./Components/AcctPage.jsx";
 // import Nav from "./Nav";
 // import SettingsPage from "./Components/settingsPage.jsx";
-// import Explore from "./Explore";
 
 function App() {
   const [action, setAction] = useState(" ");
