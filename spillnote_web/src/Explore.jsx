@@ -119,9 +119,9 @@ const Gallery = () => {
 
   const getAndSetNotes = async () => {
     try {
-      const fetchedNotes = {}; //await fetchNotes(userEmail); // Assuming fetchNotes returns a Promise
-      //setNotes(fetchedNotes);
-      console.log("loop");
+      const fetchedNotes = await fetchNotes(userEmail); // Assuming fetchNotes returns a Promise
+      setNotes(fetchedNotes);
+      console.log("Notes fetched:", fetchedNotes);
     } catch (error) {
       console.error("Error fetching notes:", error);
     }
@@ -129,7 +129,9 @@ const Gallery = () => {
 
   // Call the function to fetch and set notes (you can call it based on some user interaction or other events)
   // For simplicity, calling it when the component renders
-  getAndSetNotes();
+  useEffect(() => {
+    getAndSetNotes();
+  }, []);
 
   return (
     <div style={styles.container}>
