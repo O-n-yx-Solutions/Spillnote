@@ -8,9 +8,13 @@ html
   padding: 2rem;
   text-align: center;
 }
-body
+body 
 {
-  width: 100%;
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
 }
 [data-theme="light"]
 {
