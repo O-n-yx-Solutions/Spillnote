@@ -5,10 +5,7 @@ import Header from "../Common/Header.jsx";
 export default function acctPage()
 {
     const currentUser = useAuth();
-    if(!currentUser)
-    {
-        window.location.replace("?action=login_page")
-    }
+    
     const [loading, setLoading] = useState(false);
 
     async function handleLogout() {
@@ -22,6 +19,11 @@ export default function acctPage()
         setLoading(false);
     }
 
+    if(currentUser < 0)
+    {
+        alert("something went wrong... cannot load account page")
+        window.location.replace("?action=login_page")
+    }
 
     return(    
         <div className="acct_page">

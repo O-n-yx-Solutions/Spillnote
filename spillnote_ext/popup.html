@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' https://www.gstatic.com;"
+    />
     <style>
-      button {
-        margin: 5px;
+      body {
+        height: fit-content;
+        width: 500px;
         display: flex;
         flex-direction: row;
         align-items: center;
+        background-color: #343541;
+      }
+
+      button {
+        margin: 5px;
+        align-items: center;
+        background-color: #343541;
+        padding: 10px;
+        color: #fff;
+        border: none;
+        cursor: pointer;
       }
 
       img {
         margin-right: 5px;
-        width: 16px; /* Adjust the width as needed */
-        height: 16px; /* Adjust the height as needed */
+        width: 16px;
+        height: 16px;
       }
     </style>
   </head>
   <body>
-    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js"></script>
     <button id="save">
       <img src="./images/save.svg" alt="Save" />
       Save Page
@@ -36,10 +49,6 @@
       <img src="./images/account.svg" alt="Account" />
       Account
     </button>
-    <div id="firebase-auth-content">
-      <!-- Include other Firebase services if needed -->
-    </div>
-
-    <script src="popup.js"></script>
   </body>
+  <script src="popup.js"></script>
 </html>

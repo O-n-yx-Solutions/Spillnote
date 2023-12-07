@@ -34,12 +34,14 @@ export default function LoginPage()
     return (
         <div className="login-out-form">
             <Header />
-            <h2>Login</h2>
+            
             <div className="login-out-form-inputs">
+                <h2>Login</h2>
                 <input ref={emailRef} type="email" name="clientEmail" id="clientEmail" placeholder="Email" />
                 <input ref={passwordRef} type="password" name="clientPassword" id="clientPassword" placeholder="Password"/>
+                <button disabled={loading || currentUser} onClick={handleLogin}>Log In</button>
             </div>
-            <button disabled={loading || currentUser} onClick={handleLogin}>Log In</button>
+            
 
         </div>
         
