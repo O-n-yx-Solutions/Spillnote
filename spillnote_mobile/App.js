@@ -1,28 +1,27 @@
-import { StyleSheet, Text, View } from "react-native";
-import RegisterPage from "./Components/regPageMobile";
-import LoginPage from "./Components/loginPageMobile";
-import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
+// import Nav from "./Components/Nav";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+
 import Nav from "./Components/Nav";
-// Explore imports
 import Explore from "./Components/Explore";
-import NoteCreate from "./Components/noteCreate";
+import LoginPage from "./Components/loginPageMobile";
+import RegisterPage from "./Components/regPageMobile";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <Nav />
-      <NoteCreate />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+const navigator = createStackNavigator(
+  {
+    Home: Nav,
+    Explore: Explore,
+    LoginPage: LoginPage,
+    RegisterPage: RegisterPage,
   },
-});
+  {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+      title: "App",
+    },
+  }
+);
+
+export default createAppContainer(navigator);
