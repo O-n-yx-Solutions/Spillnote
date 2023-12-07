@@ -9,14 +9,11 @@ import RegisterPage from "./Components/RegPage";
 import LoginPage from "./Components/LoginPage";
 import Nav from "./Components/Nav.jsx";
 import Choices from "./Choices";
-import SettingsPage from "./Components/SettingsPage.jsx";
 import Explore from "./Explore";
 import RegUser from "./Components/scripts/RegUser.js";
 import Credit from "./Credit.jsx";
 import AcctPage from "./Components/AcctPage.jsx";
-// import Nav from "./Nav";
-// import SettingsPage from "./Components/settingsPage.jsx";
-// import Explore from "./Explore";
+import SettingsPage from "./Components/settingsPage.jsx";
 
 function App() {
   const [action, setAction] = useState(" ");
@@ -26,7 +23,7 @@ function App() {
     const params = new URLSearchParams(urlSearchString);
     setAction(params.get("action"));
   }, []);
-
+  
   switch (action) {
     case "nav":
       return <Nav />;

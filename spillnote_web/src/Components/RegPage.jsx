@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { signup, login, logout, useAuth } from "../firebase";
+import { signup, login, logout, useAuth } from "../firebase.js";
 import Header from "../Common/Header.jsx";
 
 export default function RegisterPage()
@@ -16,7 +16,7 @@ export default function RegisterPage()
         
         setLoading(true);
         try {
-            await signup(emailRef.current.value, passwordRef.current.value);
+            await signup(emailRef.current.value, passwordRef.current.value); // breaking not sure why
             window.location.replace("?action=acct_page");
         } catch {
             alert("Error!");

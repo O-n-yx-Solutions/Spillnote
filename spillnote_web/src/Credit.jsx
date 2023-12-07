@@ -1,5 +1,5 @@
 import { onSnapshot, collection } from "firebase/firestore";
-import getFirestore from "./Firebase";
+import getFirestore from "./firebase";
 import { useEffect, useState } from "react";
 import { handleEdit, handleNew, handleDelete, handleQueryDelete } from "./util";
 import TextEditor from "./TextEditor";
@@ -17,12 +17,12 @@ export default function Credit(noteid) {
     }
   }
 
-  const [text, setText] = useState("");
+  // const [text, setText] = useState("");
 
-  const handleInputChange = (event) => {
-    setText(event.target.value);
-    // Perform any actions you want when the content of the textarea changes
-  };
+  // const handleInputChange = (event) => {
+  //   setText(event.target.value);
+  //   // Perform any actions you want when the content of the textarea changes
+  // };
 
   //   const [notes, setNotes] = useState([
   //     { class: "Fetching Notes", id: "initial" },
@@ -63,6 +63,6 @@ export default function Credit(noteid) {
   //     </div>
   //   );
   // }
-
+  
   return <TextEditor />;
-}
+};

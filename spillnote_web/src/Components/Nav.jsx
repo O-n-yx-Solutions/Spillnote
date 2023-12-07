@@ -45,7 +45,7 @@ const Nav = () => {
           <a id="return-home" href="?action=default">
             Return to Home Page
           </a>
-          <a href="?action=settings_page">Settings</a>
+          <a id="settings-link" href="?action=settings_page">Settings</a>
         </div>
       </div>
 
