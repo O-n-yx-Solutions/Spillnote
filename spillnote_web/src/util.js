@@ -36,6 +36,15 @@ export const handleEdit = async (id) => {
   updateDoc(docRef, payload);
 };
 
+export const editDbText = async (id,text) => {
+  console.log(`ID: ${id}, Text: ${text}`)
+  const docRef = doc(db, "notes", id); // leave same
+ 
+  const payload = { content: text, timestamp: serverTimestamp() };
+
+  updateDoc(docRef, payload);
+};
+
 export const handleDelete = async (id) => {
   const docRef = doc(getFirestore, "notes", id);
   await deleteDoc(docRef);
