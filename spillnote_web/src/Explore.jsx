@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Nav from "./Components/Nav";
 import { fetchNotes, db } from "./util";
+import { editDbText } from "./util";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
@@ -37,14 +38,13 @@ const Gallery = () => {
   const handleSave = () => {
     // Implement your save logic here
     console.log("Saving changes:", quillContent);
-
+    
     // Update the item in your state or database
     const updatedItems = galleryItems.map((item) =>
-      item.id === selectedItem.id ? { ...item, content: quillContent } : item
+    item.id === selectedItem.id ? { ...item, content: quillContent } : item
     );
-
-    setGalleryItems(updatedItems); // work on updating the database WHO???
-    // Save to your database using db.saveOrUpdateItem(selectedItem.id, quillContent);
+    setGalleryItems(updatedItems);
+    editDbText(selectedItem.id, quillContent);
     setSelectedItem(null);
   };
 
