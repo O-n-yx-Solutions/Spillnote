@@ -1,49 +1,53 @@
-
 import { useRef, useState } from "react";
-import { login, logout, useAuth } from "../firebase";
+import { login, useAuth } from "../firebase";
 import Header from "../Common/Header.jsx";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function LoginPage()
-{
-    const [loading, setLoading] = useState(false);
-    const currentUser = useAuth();
+export default function LoginPage() {
+  const [loading, setLoading] = useState(false);
+  const currentUser = useAuth();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const navigate = useNavigate();
 
-    const emailRef = useRef();
-    const passwordRef = useRef();
-
-    async function handleLogin(){
-        // setLoading(true);
-        try {
-            await login(emailRef.current.value, passwordRef.current.value);
-            window.location.replace("?action=acct_page");
-        } catch {
-            alert("Login Failed");
-        }
-        // setLoading(false);
+  async function handleLogin() {
+    setLoading(true);
+    try {
+      await login(emailRef.current.value, passwordRef.current.value);
+      navigate("/acct_page"); // Use navigate to redirect
+    } catch {
+      alert("Login Failed");
     }
+    setLoading(false);
+  }
 
-    // async function handleLogout() {
-    //     setLoading(true);
-    //     try {
-    //         await logout();
-    //     } catch {
-    //         alert("Error!");
-    //     }
-    //     setLoading(false);
-    // }
-    return (
-        <div className="login-out-form">
-            <Header />
-            
-            <div className="login-out-form-inputs">
-                <h2>Login</h2>
-                <input ref={emailRef} type="email" name="clientEmail" id="clientEmail" placeholder="Email" />
-                <input ref={passwordRef} type="password" name="clientPassword" id="clientPassword" placeholder="Password"/>
-                <button disabled={loading || currentUser} onClick={handleLogin}>Log In</button>
-            </div>
-            
+  return (
+    <div className="login-out-form">
+      <Header />
 
-        </div>
-        
-    );
+      <div className="login-out-form-inputs">
+        <h2>Login</h2>
+        <input
+          ref={emailRef}
+          type="email"
+          name="clientEmail"
+          id="clientEmail"
+          placeholder="Email"
+        />
+        <input
+          ref={passwordRef}
+          type="password"
+          name="clientPassword"
+          id="clientPassword"
+          placeholder="Password"
+        />
+        <button disabled={loading || currentUser} onClick={handleLogin}>
+          Log In
+        </button>
+        <p>
+          Don't have an account? <Link to="/reg_page">Register</Link>
+        </p>
+      </div>
+    </div>
+  );
 }
