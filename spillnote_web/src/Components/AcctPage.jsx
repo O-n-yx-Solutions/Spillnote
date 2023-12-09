@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { logout, useAuth } from "../firebase";
-import Header from "../Common/Header.jsx";
+import Nav from "./Nav.jsx";
 import "./styles/AcctPage.css";
 import Creator from "./Create.jsx";
 
@@ -25,15 +25,13 @@ export default function AcctPage() {
   // Redirect to the login page if there is no current user
   if (!currentUser) {
     // alert("Something went wrong... cannot load account page");
-    navigate("/");
+    navigate("/login_page");
     return null; // Render nothing or a loading spinner while redirecting
   }
 
   return (
     <div className="acct-page-container">
-      <div className="header-container">
-        <Header />
-      </div>
+      <Nav />
       <div className="account-section">
         <h1>Account</h1>
         <div className="logged-in-info">
@@ -44,7 +42,7 @@ export default function AcctPage() {
         </div>
         <Link to="/">Home</Link>
       </div>
-      {/* <Creator /> */}
+      <Creator />
     </div>
   );
 }
