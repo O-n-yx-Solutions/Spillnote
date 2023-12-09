@@ -1,24 +1,22 @@
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { signup, login, logout, useAuth } from "../firebase.js";
 import Header from "../Common/Header.jsx";
-import "./styles/RegPage.css"
+import "./styles/RegPage.css";
 
-export default function RegisterPage()
-{
+export default function RegisterPage() {
     const [loading, setLoading] = useState(false);
     const currentUser = useAuth();
+    const navigate = useNavigate(); // Use useNavigate for navigation
 
-    const fnameRef = useRef();
-    const lnameRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
 
     async function handleSignup() {
-        
         setLoading(true);
         try {
             await signup(emailRef.current.value, passwordRef.current.value);
-            window.location.replace("?action=acct_page");
+            navigate("/acct_page"); // Use navigate for navigation
         } catch {
             alert("Error!");
         }
@@ -28,15 +26,16 @@ export default function RegisterPage()
     return (
         <div className="login-out-form">
             <Header />
-        <div className="signup-section">
-            <h1>Sign Up</h1>
-            <div className="login-out-form-inputs">
-                <input ref={emailRef} type="email" name="clientEmail" id="clientEmail" placeholder="Email" required/>
-                <input ref={passwordRef} type="password" name="clientPassword" id="clientPassword" placeholder="Password" required/>
+            <div className="signup-section">
+                <h1>Sign Up</h1>
+                <div className="login-out-form-inputs">
+                    <input ref={emailRef} type="email" name="clientEmail" id="clientEmail" placeholder="Email" required />
+                    <input ref={passwordRef} type="password" name="clientPassword" id="clientPassword" placeholder="Password" required />
+                </div>
+                <button disabled={loading || currentUser} onClick={handleSignup}>
+                    Sign Up
+                </button>
             </div>
-            <button disabled={loading || currentUser} onClick={handleSignup}>Sign Up</button>
-        </div>
-            
         </div>
     );
 }
