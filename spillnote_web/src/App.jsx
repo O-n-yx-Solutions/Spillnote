@@ -18,7 +18,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Explore />} />
-        <Route path="login_page" element={<LoginPage/>} />
+        <Route path="login_page" element={<LoginPage />} />
         <Route path="reg_page" element={<RegisterPage />} />
         <Route path="acct_page" element={<AcctPage />} />
         <Route path="settings_page" element={<SettingsPage />} />
@@ -27,6 +27,3 @@ export default function App() {
     </BrowserRouter>
   );
 }
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
