@@ -13,8 +13,8 @@ const GalleryApp = () => {
   const [galleryItems, setGalleryItems] = useState([]);
 
   const getAndSetNotes = async () => {
-    const authUser = "bob@gmail.com";
-    const userEmail = authUser ? authUser : "bob@gmail.com";
+    //const authUser = "bob@gmail.com";
+    //const userEmail = authUser ? authUser : "bob@gmail.com";
     try {
       const fetchedNotes = await fetchNotes(userEmail);
       setGalleryItems(fetchedNotes);
@@ -36,7 +36,7 @@ const GalleryApp = () => {
             <View key={item.id} style={styles.galleryItem}>
               <HTML
                 source={{
-                  html: `<p>${item.id}</p>
+                  html: `
                                <h2>${item.Title}</h2>
                                <p>${item.content}</p>
                               `,

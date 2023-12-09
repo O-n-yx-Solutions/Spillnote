@@ -36,11 +36,19 @@ export const handleEdit = async (id) => {
   updateDoc(docRef, payload);
 };
 
-export const editDbText = async (id,text) => {
-  console.log(`ID: ${id}, Text: ${text}`)
+export const editDbText = async (id, text) => {
+  console.log(`ID: ${id}, Text: ${text}`);
   const docRef = doc(db, "notes", id); // leave same
- 
+
   const payload = { content: text, timestamp: serverTimestamp() };
+
+  updateDoc(docRef, payload);
+};
+export const editNoteTags = async (id, tags) => {
+  console.log(`ID: ${id}, Tags: ${tags}`);
+  const docRef = doc(db, "notes", id); // leave same
+
+  const payload = { tags: tags, timestamp: serverTimestamp() };
 
   updateDoc(docRef, payload);
 };
@@ -65,6 +73,22 @@ export const handleQueryDelete = async () => {
     const docRef = doc(getFirestore, "notes", result.id);
     await deleteDoc(docRef);
   });
+};
+
+export const removeNote = async (noteId) => {
+  try {
+    console.log(noteId);
+    const docRef = doc(db, "notes", noteId);
+
+    if (docRef) {
+      await deleteDoc(docRef);
+      console.log(`Note with ID ${noteId} successfully deleted.`);
+    } else {
+      console.log(`Note with ID ${noteId} not found.`);
+    }
+  } catch (error) {
+    console.error("Error removing note:", error);
+  }
 };
 
 export const fetchNotes = async (userEmail) => {
@@ -93,5 +117,30 @@ export const fetchNotes = async (userEmail) => {
     throw error;
   }
 };
+export const fetchTags = async (userEmail) => {
+  try {
+    if (userEmail) {
+      const q = query(collection(db, "tags"), where("email", "==", userEmail));
+      const querySnapshot = await getDocs(q);
 
+      const tags = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      console.log("Fetched Tags:", tags); // Log all the results
+
+      return querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+    } else {
+      console.error("User email is undefined");
+      return [];
+    }
+  } catch (error) {
+    console.error("Error fetching tags:", error);
+    throw error;
+  }
+};
 export const db = getFirestore();

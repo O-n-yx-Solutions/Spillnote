@@ -88,12 +88,12 @@ const TextEditor = () => {
       <h1 style={{ textAlign: "center" }}>Spillnote</h1>
       <div style={{ display: "grid", justifyContent: "center" }}>
         <ReactQuill
-          value={quillContent}
+          //value={get from database}
           theme="snow"
           modules={modules}
           formats={formats}
           placeholder="write your content ...."
-          onChange={setQuillContent}
+          onChange={handleProcedureContentChange}
           style={{ height: "220px" }}
         ></ReactQuill>
       </div>

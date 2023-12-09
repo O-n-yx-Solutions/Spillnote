@@ -42,7 +42,7 @@ const Popout = ({ onClose, onSubmit }) => {
       height: "20px",
     },
   };
-  const usertag = "0854oFj8R4PuW0iDbDaQ"; // change this to return the current user
+  // const usertag = "0854oFj8R4PuW0iDbDaQ"; // change this to return the current user
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,7 +54,7 @@ const Popout = ({ onClose, onSubmit }) => {
       tagColor,
       selectedIcon
     );
-    PushTag(usertag, selectedTag, nameEntry, tagColor, selectedIcon);
+    PushTag(currentUser.email, selectedTag, nameEntry, tagColor, selectedIcon);
 
     //onSubmit(usertag, selectedTag, nameEntry, tagColor, selectedIcon.imageUrl); // Pass selectedIcon to onSubmit
   };
@@ -64,7 +64,13 @@ const Popout = ({ onClose, onSubmit }) => {
       <div className="popout-content" style={styles.scrollableContainer}>
         <section id="ParentSelector">
           <h2>Set Parent</h2>
-          <ul style={{ /*listStyle: "none", margin: "0.5em"*/ }}>
+          <ul
+            style={
+              {
+                /*listStyle: "none", margin: "0.5em"*/
+              }
+            }
+          >
             {TagItems.map((tag) => (
               <li
                 key={tag.id}
@@ -134,7 +140,9 @@ const Popout = ({ onClose, onSubmit }) => {
           </form>
         </section>
       </div>
-      <button id="close_btn" onClick={onClose}>Close</button>
+      <button id="close_btn" onClick={onClose}>
+        Close
+      </button>
     </div>
   );
 };

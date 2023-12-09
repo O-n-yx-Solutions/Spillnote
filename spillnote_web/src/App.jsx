@@ -2,7 +2,7 @@ import "./Small.css";
 import "./Large.css";
 import { useEffect, useState } from "react";
 import { onSnapshot, collection } from "firebase/firestore";
-
+import TextEditor from "./TextEditor.jsx";
 //import getFirestore from "./Firebase";
 import { handleEdit, handleNew, handleDelete, handleQueryDelete } from "./util";
 import RegisterPage from "./Components/RegPage";
@@ -23,13 +23,13 @@ function App() {
     const params = new URLSearchParams(urlSearchString);
     setAction(params.get("action"));
   }, []);
-  
+
   switch (action) {
     case "nav":
       return <Nav />;
       break;
     case "create":
-      return <Credit />;
+      return <TextEditor />;
       break;
     case "login_page":
       return <LoginPage />;
@@ -51,11 +51,11 @@ function App() {
       return <AcctPage />;
 
     case "recent_link":
-      
+
     case "fav_link":
-      
+
     default:
-      return <Nav />;
+      return <Explore />;
   }
 }
 
