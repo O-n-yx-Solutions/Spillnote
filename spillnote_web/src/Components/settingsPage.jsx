@@ -1,4 +1,5 @@
 import React from "react";
+import Nav from "./Nav";
 // import Sun from "./images/Sun.svg?react";
 // import Moon  from "./images/Moon.svg?react";
 import "./styles/DarkMode.css";
@@ -20,6 +21,9 @@ const SettingsPage = () => {
             else setLightMode();
         };
     return (
+        <div>
+            <Nav />
+        
         <div className='dark_mode'>
             {/* <Header /> */}
             <h1>Settings</h1>
@@ -33,6 +37,7 @@ const SettingsPage = () => {
                 <img src='/settingsIcons/Sun.svg' alt="Sun"/>
                 <img src='/settingsIcons/Moon.svg' alt="Moon"/>
             </label>
+            
 
             {/*
              <label className='dark_mode_label' htmlFor='darkmode-toggle'>
@@ -40,6 +45,7 @@ const SettingsPage = () => {
                 <Moon />
             </label>
              */}
+        </div>
         </div>
     );
 };

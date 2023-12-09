@@ -1,0 +1,26 @@
+.acct-page-container {
+    height: 100%; 
+    overflow: hidden;
+    display: flex;
+  }
+  
+  .header-container {
+    flex: 1; /* Take up the full height of the left side */
+  }
+  
+  .account-section {
+    flex: 2;
+    background-color: rgb(54, 53, 53);
+    background-image: linear-gradient(rgb(0, 102, 255), rgb(212, 0, 255));
+    margin: 10%;
+    padding: 2%; /* Center the content vertically */
+    text-align: center;
+    position: relative;
+  }
+  
+  .logged-in-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PopoutHandler from "./TagCreator";
+import Layout from "./scripts/Layout";
 const navigationData = [
   {
     id: 1,
@@ -35,20 +36,7 @@ const Nav = () => {
           <img src="/Logo.svg" alt="Logo" id="logo" />
           <div className="title">Spillnote</div>
         </div>
-        <div id="account">
-          <a id="myaccount-link" href="?action=acct_page">
-            My Account
-          </a>
-          <a id="myaccount-link" href="?action=reg_page">
-            Register
-          </a>
-          <a id="return-home" href="?action=default">
-            Return to Home Page
-          </a>
-          <a id="settings-link" href="?action=settings_page">
-            Settings
-          </a>
-        </div>
+        <Layout />
       </div>
 
       <ul className="dynamic-list">
