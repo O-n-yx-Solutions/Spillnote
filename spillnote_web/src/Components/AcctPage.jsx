@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { logout, useAuth } from "../firebase";
 import Header from "../Common/Header.jsx";
 import "./styles/AcctPage.css";
+import Creator from "./Create.jsx";
 
 export default function AcctPage() {
   const currentUser = useAuth();
@@ -14,7 +15,7 @@ export default function AcctPage() {
     setLoading(true);
     try {
       await logout();
-      navigate("/?action=default");
+      navigate("/");
     } catch {
       alert("Error!");
     }
@@ -43,6 +44,7 @@ export default function AcctPage() {
         </div>
         <Link to="/">Home</Link>
       </div>
+      {/* <Creator /> */}
     </div>
   );
 }
