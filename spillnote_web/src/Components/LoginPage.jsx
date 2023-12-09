@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { login, useAuth } from "../firebase";
-import Header from "../Common/Header.jsx";
+import Nav from "./Nav.jsx";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
@@ -23,8 +23,7 @@ export default function LoginPage() {
 
   return (
     <div className="login-out-form">
-      <Header />
-
+      <Nav />
       <div className="login-out-form-inputs">
         <h2>Login</h2>
         <input
