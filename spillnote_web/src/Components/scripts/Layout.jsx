@@ -19,6 +19,9 @@ const Layout = () => {
         <div>
           <Link to="/login_page">Log In</Link>
         </div>
+        <div>
+          <Link to="/calendar">Calendar</Link>
+        </div>
         </nav>
       <Outlet />
     </>

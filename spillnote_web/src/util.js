@@ -143,4 +143,68 @@ export const fetchTags = async (userEmail) => {
     throw error;
   }
 };
+
+export const calendarEvent = async (calEvent) => {
+  try {
+    // works with random id
+    const newCallEvent = doc(collection(db,"events"))
+    await setDoc(newCallEvent,calEvent)
+
+  // this you set the id
+    // const newCallEvent = (doc(db,"events","set id here"));
+    // await setDoc(newCallEvent,calEvent);
+    
+    console.log('Event added to Firestore with ID:', newCallEvent.id);
+  } catch (error) {
+    console.error('Error adding event to Firestore:', error);
+  }
+};
+
+export const getEventsByUserEmail = async (userEmail) => {
+  try {
+    if (userEmail) {
+      const q = query(collection(db, "events"), where("email", "==", userEmail));
+      const querySnapshot = await getDocs(q);
+
+      const events = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      console.log("Fetched Events:", events); // Log all the results
+
+      return events;
+    } else {
+      console.error("User email is undefined");
+      return [];
+    }
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    throw error;
+  }
+};
+
+export const removeEventFromDatabase = async (eventId, eventTitle) => {
+  try {
+    const eventsRef = collection(db, 'events');
+    const queryRef = query(eventsRef, where('id', '==', eventId), where('title', '==', eventTitle));
+    const querySnapshot = await getDocs(queryRef);
+
+    if (querySnapshot.size === 0) {
+      console.error(`No matching event found with ID ${eventId} and title ${eventTitle}`);
+      return;
+    }
+
+    querySnapshot.forEach(async (doc) => {
+      await deleteDoc(doc.ref);
+      console.log(`Event with ID ${eventId} and title ${eventTitle} deleted from the database`);
+    });
+  } catch (error) {
+    console.error('Error deleting event from Firestore:', error);
+    throw error;
+  }
+};
+
+
+
 export const db = getFirestore();
