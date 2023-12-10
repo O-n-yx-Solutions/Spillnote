@@ -12,6 +12,7 @@ import Explore from "./Explore";
 import Credit from "./Credit.jsx";
 import AcctPage from "./Components/AcctPage.jsx";
 import SettingsPage from "./Components/settingsPage.jsx";
+import Calendar from "./Components/Callender.jsx";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="reg_page" element={<RegisterPage />} />
         <Route path="acct_page" element={<AcctPage />} />
         <Route path="settings_page" element={<SettingsPage />} />
+        <Route path="calendar" element={<Calendar />}/>
         <Route path="text_editor" element={<TextEditor />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
