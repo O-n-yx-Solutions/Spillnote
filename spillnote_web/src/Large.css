@@ -13,15 +13,7 @@
     padding: 0;
     margin: 0;
   }
-  .navbar {
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    height: 100vh;
-    max-width: 18em;
-  }
+/* .navbar is now in components/styling/navbar.css */
 
   /*****************************
         Header 

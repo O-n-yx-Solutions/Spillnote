@@ -151,8 +151,14 @@ form {
   align-self: center;
 }
 .navbar {
-  grid-template-columns: 1fr 1fr;
-  background-color: rgb(136, 136, 136, 0.3);
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 100vh;
+  max-width: 18em;
+  background-color: rgb(48, 48, 88);
 }
 .popout-content {
   display: grid;
