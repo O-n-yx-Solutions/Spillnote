@@ -169,10 +169,7 @@ const Gallery = () => {
 
   return (
     <div style={{ display: "flex" }}>
-      <div id="nav">
-        <Nav />
-      </div>
-
+      <Nav />
       <div>
         <input
           type="text"

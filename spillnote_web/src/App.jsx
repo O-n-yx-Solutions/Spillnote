@@ -22,6 +22,7 @@ export default function App() {
         <Route path="reg_page" element={<RegisterPage />} />
         <Route path="acct_page" element={<AcctPage />} />
         <Route path="settings_page" element={<SettingsPage />} />
+        <Route path="text_editor" element={<TextEditor />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>
