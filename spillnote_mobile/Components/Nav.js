@@ -1,36 +1,67 @@
 import React from "react";
-import {
-  Text,
-  Image,
-  StyleSheet,
-  View,
-  Button,
-  TouchableOpacity,
-} from "react-native";
+import { Image, StyleSheet, View, TouchableOpacity, Text } from "react-native";
 
 const HomeScreen = ({ navigation }) => {
+  const handleNavigation = (screen) => {
+    navigation.navigate(screen);
+  };
+
   return (
-    <View>
-      <Text style={styles.text}>Spillnote</Text>
+    <View style={styles.container}>
       <Image source={require("../assets/icon128.png")} style={styles.image} />
-      <Button onPress={() => navigation.navigate(`Explore`)} title="Explore" />
-      <Button title="Login" onPress={() => navigation.navigate(`LoginPage`)} />
-      <Button
-        title="Register"
-        onPress={() => navigation.navigate(`RegisterPage`)}
-      />
+      <TouchableOpacity
+        style={[styles.button, { backgroundColor: "#3f4966" }]}
+        onPress={() => handleNavigation("Explore")}
+      >
+        <Text style={styles.buttonText}>Explore</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.button, { backgroundColor: "#3f4966" }]}
+        onPress={() => handleNavigation("LoginPage")}
+      >
+        <Text style={styles.buttonText}>Login</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.button, { backgroundColor: "#3f4966" }]}
+        onPress={() => handleNavigation("RegisterPage")}
+      >
+        <Text style={styles.buttonText}>Register</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.button, { backgroundColor: "#3f4966" }]}
+        onPress={() => handleNavigation("DrawingScreen")}
+      >
+        <Text style={styles.buttonText}>Draw</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#3f4966",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  button: {
+    borderRadius: 5,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginVertical: 10,
+  },
+  buttonText: {
+    color: "#ffffff",
+    fontSize: 16,
+    textAlign: "center",
+  },
   text: {
     fontSize: 50,
   },
   image: {
     width: 200,
     height: 200,
-    resizeMode: "cover", // You can use "cover", "contain", "stretch", etc.
+    resizeMode: "cover",
   },
 });
 

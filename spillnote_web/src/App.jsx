@@ -24,6 +24,7 @@ export default function App() {
         <Route path="acct_page" element={<AcctPage />} />
         <Route path="settings_page" element={<SettingsPage />} />
         <Route path="calendar" element={<Calendar />}/>
+        <Route path="text_editor" element={<TextEditor />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>

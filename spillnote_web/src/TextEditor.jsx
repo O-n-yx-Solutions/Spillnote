@@ -1,6 +1,7 @@
 import React from "react";
 import "quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
+import Nav from "./Components/Nav";
 
 const TextEditor = () => {
   var modules = {
@@ -78,6 +79,20 @@ const TextEditor = () => {
     "align",
     "size",
   ];
+  const quillToolbarStyles = {
+    ".ql-toolbar svg": {
+      stroke: "#fff",
+    },
+    ".ql-snow.ql-toolbar button svg": {
+      stroke: "#fff",
+    },
+    ".ql-snow .ql-stroke": {
+      stroke: "#fff",
+    },
+    ".ql-snow .ql-picker": {
+      color: "#fff",
+    },
+  };
 
   const handleProcedureContentChange = (content) => {
     console.log("content---->", content);
@@ -85,18 +100,26 @@ const TextEditor = () => {
 
   return (
     <div>
+      <Nav />
       <h1 style={{ textAlign: "center" }}>Spillnote</h1>
       <div style={{ display: "grid", justifyContent: "center" }}>
         <ReactQuill
-          value={quillContent}
           theme="snow"
           modules={modules}
           formats={formats}
           placeholder="write your content ...."
-          onChange={setQuillContent}
+          onChange={handleProcedureContentChange}
           style={{ height: "220px" }}
         ></ReactQuill>
       </div>
+      <style>
+        {Object.entries(quillToolbarStyles).map(
+          ([selector, rules]) =>
+            `${selector} { ${Object.entries(rules)
+              .map(([property, value]) => `${property}: ${value};`)
+              .join(" ")} }`
+        )}
+      </style>
     </div>
   );
 };

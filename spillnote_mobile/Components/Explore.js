@@ -13,8 +13,8 @@ const GalleryApp = () => {
   const [galleryItems, setGalleryItems] = useState([]);
 
   const getAndSetNotes = async () => {
-    //const authUser = "bob@gmail.com";
-    //const userEmail = authUser ? authUser : "bob@gmail.com";
+    const authUser = "john@gmail.com";
+    const userEmail = authUser ? authUser : "john@gmail.com";
     try {
       const fetchedNotes = await fetchNotes(userEmail);
       setGalleryItems(fetchedNotes);

@@ -169,11 +169,12 @@ const Gallery = () => {
 
   return (
     <div style={{ display: "flex" }}>
-      <div id="nav">
-        <Nav />
-      </div>
-
-      <div>
+      <Nav />
+      <div
+        style={{
+          width: "70vw",
+        }}
+      >
         <input
           type="text"
           placeholder="&#x1F50E;&#xFE0E;"
@@ -182,27 +183,41 @@ const Gallery = () => {
         />
 
         <h1>Explore</h1>
-        {filteredItems.map((item, index) => (
-          <div
-            key={item.id}
-            style={{
-              border: "1px solid #ccc",
-              padding: "10px",
-              margin: "10px",
-              borderRadius: "8px",
-              cursor: "pointer",
-              height: "200px",
-              width: "200px",
-            }}
-            onClick={() => handleItemClick(item)}
-          >
-            <h2>{item.Title}</h2>
-            <RichTextComponent richTextString={item.content} />
-            <button onClick={(event) => handleDelete(item.id, event)}>
-              Delete
-            </button>
-          </div>
-        ))}
+        <div
+          style={{
+            width: "100%",
+            paddingLeft: "20px",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+            gap: "20px",
+            maxHeight: "80vh",
+            overflowY: "auto",
+            overflowX: "hidden",
+          }}
+        >
+          {filteredItems.map((item, index) => (
+            <div
+              key={item.id}
+              style={{
+                boxSizing: "border-box",
+                border: "1px solid #ccc",
+                padding: "0",
+                margin: "0",
+                borderRadius: "8px",
+                cursor: "pointer",
+                height: "200px",
+                width: "100%",
+              }}
+              onClick={() => handleItemClick(item)}
+            >
+              <h2>{item.Title}</h2>
+              <RichTextComponent richTextString={item.content} />
+              <button onClick={(event) => handleDelete(item.id, event)}>
+                Delete
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
 
       {selectedItem && (
