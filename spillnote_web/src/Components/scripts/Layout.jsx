@@ -14,12 +14,6 @@ const Layout = () => {
           <Link to="/settings_page">Settings</Link>
         </div>
         <div>
-          <Link to="/reg_page">Sign Up</Link>
-        </div>
-        <div>
-          <Link to="/login_page">Log In</Link>
-        </div>
-        <div>
           <Link to="/calendar">Calendar</Link>
         </div>
         </nav>

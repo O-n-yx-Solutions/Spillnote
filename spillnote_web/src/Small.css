@@ -13,8 +13,10 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
-[data-theme="light"] {
+[data-theme="light"] 
+{
   background-color: white;
+  color: black;
 }
 #logo {
   height: 6em;
@@ -138,6 +140,7 @@ form {
 .title {
   align-self: center;
   font-size: x-large;
+  color: white;
 }
 /*****************************
   Navigation 
