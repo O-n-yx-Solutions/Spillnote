@@ -168,12 +168,12 @@ const Gallery = () => {
   );
 
   return (
-    <div style={{ display: "flex" }}>
+    <div className="explore">
       <div id="nav">
         <Nav />
       </div>
 
-      <div>
+      <div className="explore-div">
         <input
           type="text"
           placeholder="&#x1F50E;&#xFE0E;"

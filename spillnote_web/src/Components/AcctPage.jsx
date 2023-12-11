@@ -19,18 +19,19 @@ export default function acctPage()
         setLoading(false);
     }
 
-    if(currentUser < 0)
+    if(currentUser === null)
     {
-        alert("something went wrong... cannot load account page")
         window.location.replace("?action=login_page")
     }
 
     return(    
         <div className="acct_page">
             <Header />
-            <h1>Account</h1>
-            <h2>Logged in as: {currentUser?.email}</h2>
-            <button disabled={!currentUser} onClick={handleLogout}>Log Out</button>
+            <section id="account-info">
+                <h1>Account</h1>
+                <h2>Logged in as: {currentUser?.email}</h2>
+                <button disabled={!currentUser} onClick={handleLogout}>Log Out</button>
+            </section>
         </div>
     );
 }
