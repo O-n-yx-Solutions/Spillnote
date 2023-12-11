@@ -2,6 +2,7 @@ import React from "react";
 import "quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
 import Nav from "./Components/Nav";
+import "./Small.css";
 
 const TextEditor = () => {
   var modules = {
@@ -99,11 +100,12 @@ const TextEditor = () => {
   };
 
   return (
-    <div>
+    <div style={{ display: "flex"}}>
       <Nav />
-      <h1 style={{ textAlign: "center" }}>Spillnote</h1>
-      <div style={{ display: "grid", justifyContent: "center" }}>
-        <ReactQuill
+      <h1 style={{ textAlign: "center", padding: "1em" }}>Spillnote</h1>
+      <div style={{ display: "grid", justifyContent: "center", padding: "1em"}}>
+        <ReactQuill 
+          id="reactquill"
           theme="snow"
           modules={modules}
           formats={formats}
