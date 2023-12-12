@@ -7,14 +7,14 @@ import Nav from "./Components/Nav";
 import Explore from "./Components/Explore";
 import LoginPage from "./Components/loginPageMobile";
 import RegisterPage from "./Components/regPageMobile";
-import DrawingScreen from "./Components/DrawingScreen";
+import RichTextEditor from "./Components/noteCreate"
 const navigator = createStackNavigator(
   {
     Home: Nav,
     Explore: Explore,
     LoginPage: LoginPage,
     RegisterPage: RegisterPage,
-    DrawingScreen: DrawingScreen,
+    Create: RichTextEditor,
   },
   {
     initialRouteName: "Home",
