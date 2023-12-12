@@ -11,19 +11,20 @@ import {
   updateDoc,
   getFirestore,
 } from "firebase/firestore";
-import TextEditor from "./TextEditor";
 //import { db } from "./firebase";
-import { useAuth } from "./firebase";
-import { useEffect, useState } from "react";
 
-export const handleNew = async () => {
-  const collectionRef = collection(getFirestore, "notes"); // leave same
-  // HTML or React text area element
-  const textContent = prompt("Enter a note");
-  // FUntion to check on edit of texty area that sets the variables value and payload
-  const payload = { className: textContent, timestamp: serverTimestamp() };
+export const handleNew = async (userEmail, title, textContent) => {
+  try {
+    const collectionRef = collection(db, "notes"); 
+    const payload = { Title:title, content: textContent, email: userEmail, timestamp: serverTimestamp() };
+
+    const docRef = await addDoc(collectionRef, payload);
+    console.log("Document written with ID: ", docRef.id);
+  } catch (error) {
+    console.error("Error adding document: ", error);
+  }
 };
-// same here ^^^
+
 export const handleEdit = async (id) => {
   const docRef = doc(db, "notes", id); // leave same
   console.log(`DOC STUFF: ${docRef.notes}`);
@@ -38,7 +39,7 @@ export const handleEdit = async (id) => {
 
 export const editDbText = async (id, text) => {
   console.log(`ID: ${id}, Text: ${text}`);
-  const docRef = doc(db, "notes", id); // leave same
+  const docRef = doc(db, "notes", id); 
 
   const payload = { content: text, timestamp: serverTimestamp() };
 
@@ -46,7 +47,7 @@ export const editDbText = async (id, text) => {
 };
 export const editNoteTags = async (id, tags) => {
   console.log(`ID: ${id}, Tags: ${tags}`);
-  const docRef = doc(db, "notes", id); // leave same
+  const docRef = doc(db, "notes", id); 
 
   const payload = { tags: tags, timestamp: serverTimestamp() };
 
@@ -146,13 +147,8 @@ export const fetchTags = async (userEmail) => {
 
 export const calendarEvent = async (calEvent) => {
   try {
-    // works with random id
     const newCallEvent = doc(collection(db,"events"))
     await setDoc(newCallEvent,calEvent)
-
-  // this you set the id
-    // const newCallEvent = (doc(db,"events","set id here"));
-    // await setDoc(newCallEvent,calEvent);
     
     console.log('Event added to Firestore with ID:', newCallEvent.id);
   } catch (error) {
@@ -171,7 +167,7 @@ export const getEventsByUserEmail = async (userEmail) => {
         ...doc.data(),
       }));
 
-      console.log("Fetched Events:", events); // Log all the results
+      console.log("Fetched Events:", events); 
 
       return events;
     } else {
