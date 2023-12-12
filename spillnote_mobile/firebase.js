@@ -1,39 +1,24 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth';
 
-// const apiKey = process.env.REACT_APP_VITE_API_KEY;
-// const authDomain = process.env.REACT_APP_VITE_AUTHDOMAIN;
-// const messagingSenderId = process.env.REACT_APP_VITE_MESSAGINGSENDERID;
-// const appId = process.env.REACT_APP_VITE_APPID;
+import { useEffect, useState } from "react";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-    apiKey: process.env.REACT_APP_API_KEY,
-    authDomain: process.env.REACT_APP_AUTHDOMAIN,
-    databaseURL: "https://spillnote-f2023-default-rtdb.firebaseio.com",
-    projectId: "spillnote-f2023",
-    storageBucket: "spillnote-f2023.appspot.com",
-    messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
-    appId: process.env.REACT_APP_APPID
+export const firebaseConfig = {
+  apiKey: "AIzaSyCnMQRkegXyhYe8cdfdOLNUHF2ciA6w_6g",
+  authDomain: "spillnote-f2023.firebaseapp.com",
+  databaseURL: "https://spillnote-f2023-default-rtdb.firebaseio.com",
+  projectId: "spillnote-f2023",
+  storageBucket: "spillnote-f2023.appspot.com",
+  messagingSenderId: "301966407502",
+  appId: "1:301966407502:web:2a4f9075431afc0bf5901f",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-// console.log(db)
+const auth = getAuth(app);
 
-export function signup(email, password) {
-    return auth().createUserWithEmailAndPassword(email, password);
-  }
-  
-  export function login(email, password) {
-    return auth().signInWithEmailAndPassword(email, password);
-  }
-  
   export function logout() {
     return auth().signOut();
   }
@@ -43,66 +28,30 @@ export function signup(email, password) {
     const [currentUser, setCurrentUser] = useState();
   
     useEffect(() => {
-      const unsub = auth().onAuthStateChanged((user) => setCurrentUser(user));
+      const auth = getAuth(); // Get the Auth instance
+      const unsub = onAuthStateChanged(auth, (user) => setCurrentUser(user));
       return unsub;
     }, []);
   
     return currentUser;
   }
+  export function signup(email, password) {
+    const auth = getAuth(); // Get the Auth instance
+    return createUserWithEmailAndPassword(auth, email, password)
+      .catch((error) => {
+        console.error('Signup failed:', error.message);
+        throw error; // Rethrow the error to propagate it to the caller
+      });
+  }
+  
+  export function login(email, password) {
+    const auth = getAuth(); // Get the Auth instance
+    return signInWithEmailAndPassword(auth, email, password)
+      .catch((error) => {
+        console.error('Login failed:', error.message);
+        throw error; // Rethrow the error to propagate it to the caller
+      });
+  }
   
 
-
 export default db;
-
-// import { initializeFirestore, initializeApp } from 'firebase/firestore';
-// import { useEffect, useState } from 'react';
-// import auth from '@react-native-firebase/auth';
-// import firestore from '@react-native-firebase/firestore';
-
-// const firebaseConfig = {
-//     apiKey: process.env.REACT_APP_API_KEY,
-//     authDomain: process.env.REACT_APP_AUTHDOMAIN,
-//     databaseURL: "https://spillnote-f2023-default-rtdb.firebaseio.com",
-//     projectId: "spillnote-f2023",
-//     storageBucket: "spillnote-f2023.appspot.com",
-//     messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
-//     appId: process.env.REACT_APP_APPID
-// };
-
-// // Initialize Firebase
-// // if (!auth.apps.length) {
-//   auth.initializeApp(firebaseConfig);
-// // }
-// // Initialize Firebase
-// // const app = initializeApp(firebaseConfig);
-// // const db = getFirestore(app);
-// // console.log(db)
-// // export default db;
-
-// // const db = firestore();
-
-// export function signup(email, password) {
-//   return auth().createUserWithEmailAndPassword(email, password);
-// }
-
-// export function login(email, password) {
-//   return auth().signInWithEmailAndPassword(email, password);
-// }
-
-// export function logout() {
-//   return auth().signOut();
-// }
-
-// // Custom Hook
-// export function useAuth() {
-//   const [currentUser, setCurrentUser] = useState();
-
-//   useEffect(() => {
-//     const unsub = auth().onAuthStateChanged((user) => setCurrentUser(user));
-//     return unsub;
-//   }, []);
-
-//   return currentUser;
-// }
-
-// export default db;

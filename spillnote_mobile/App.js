@@ -1,6 +1,4 @@
-import { StyleSheet, View } from "react-native";
-import { StatusBar } from "expo-status-bar";
-// import Nav from "./Components/Nav";
+
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { TouchableOpacity, Text } from "react-native";

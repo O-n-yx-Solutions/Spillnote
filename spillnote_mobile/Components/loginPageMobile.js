@@ -1,64 +1,56 @@
-import React from 'react';
-import { View, Text, TextInput, Button, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { login } from '../firebase';
-import { useState } from 'react';
+import { useAuth } from '../firebase';
 
-function LoginPage({navigation}) {
-  const handleNavigation = (screen) => 
-  {
-    navigation.navigate(screen);
-  };
+const LoginPage = () => {
+  const currentUser = useAuth();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const [ username, setUsername ] = useState("");
-  const [ password, setPassword ] = useState("");
-
-
-  const handleChange = (event) => 
-  {
-    switch (event.target.name) {
-      case "username":
-        setUsername(event.target.value);
-        break;
-      case "password":
-        setAge(event.target.value);
-        break;
+  const handleLogin = async () => {
+    try {
+      await login(email, password);
+      //console.log('User logged in successfully:', currentUser?.uid);
+    } catch (error) {
+      //console.error('Login failed:', error.message);
     }
   };
+  
 
-    return (
-        <View>
-        <Text style={styles.heading}>Log In</Text>
-        <View>
-          <Text style={styles.text}>Username:</Text>
-          <TextInput
-            name="username"
-            onChange={handleChange}
-            placeholder="Enter your username"
-            style={styles.inputboxes}
-          />
-        </View>
-        <View>
-          <Text style={styles.text}>Password:</Text>
-          <TextInput
-            name="password"
-            placeholder="Enter your password"
-            secureTextEntry={true}
-            style={styles.inputboxes}
-          />
-        </View>
-  
-        {/* <Button title="Log In" onPress={() => console.log('Log In clicked')} /> */}
-  
-        <TouchableOpacity style={styles.login} onPress={(username) => console.log(username.value)}>
+  return (
+    <View>
+      <Text style={styles.heading}>Log In</Text>
+      <View>
+        <Text style={styles.text}>Email:</Text>
+        <TextInput
+          name="email"
+          placeholder="Enter your email"
+          style={styles.inputboxes}
+          onChangeText={(text) => setEmail(text)}
+          ref={emailRef}
+        />
+      </View>
+      <View>
+        <Text style={styles.text}>Password:</Text>
+        <TextInput
+          name="password"
+          placeholder="Enter your password"
+          secureTextEntry={true}
+          style={styles.inputboxes}
+          onChangeText={(text) => setPassword(text)}
+          ref={passwordRef}
+        />
+      </View>
+
+      <TouchableOpacity style={styles.login} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
-
-        <TouchableOpacity style={styles.reg} onPress={() => handleNavigation("RegisterPage")}>
-          <Text style={styles.buttonText}>Need an Account? Register</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
+    </View>
+  );
+}
 
   const styles = StyleSheet.create({
     login: {
