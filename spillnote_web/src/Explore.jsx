@@ -167,6 +167,7 @@ const Gallery = () => {
       item.content.toLowerCase().includes(searchInput.toLowerCase())
   );
 
+
   return (
     <div style={{ display: "flex" }}>
       <Nav />

@@ -1,6 +1,7 @@
-.dark_mode {
-    margin-top: -20px;
-    margin-left: 10px;
+.dark_mode 
+{
+    margin: 1em;
+    display: inline-block;
 }
 
 .dark_mode_label {
@@ -44,18 +45,18 @@
     width: 30px;
 }
 
-.dark_mode_label svg {
+.dark_mode_label img {
     position: absolute;
     width: 20px;
     top: 5px;
     z-index: 100;
 }
-.dark_mode_label svg.sun {
+#sun {
     left: 5px;
     fill: #fff;
     transition: 0.3s;
 }
-.dark_mode_label svg.moon {
+#moon {
     left: 40px;
     fill: #7e7e7e;
     transition: 0.3s;

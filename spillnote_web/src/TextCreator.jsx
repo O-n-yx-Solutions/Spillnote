@@ -83,8 +83,14 @@ const TextEditor = () => {
     console.log("content---->", content);
   };
 
+  function validateText(text)
+  {
+    const isString = typeof text === 'string';
+    return isString;
+  }
+
   return (
-    <div>
+    <div style="display: flex">
       <h1 style={{ textAlign: "center" }}>Spillnote</h1>
       <div style={{ display: "grid", justifyContent: "center" }}>
         <ReactQuill

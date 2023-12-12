@@ -29,8 +29,8 @@ const SettingsPage = () => {
           onChange={toggleTheme}
         />
         <label className="dark_mode_label" htmlFor="darkmode-toggle">
-          <img src="/settingsIcons/Sun.svg" alt="Sun" />
-          <img src="/settingsIcons/Moon.svg" alt="Moon" />
+          <img id="sun" src="/settingsIcons/Sun.svg" alt="Sun" />
+          <img id="moon" src="/settingsIcons/Moon.svg" alt="Moon" />
         </label>
 
         {/*
