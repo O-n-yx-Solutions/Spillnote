@@ -238,7 +238,9 @@ const Gallery = () => {
             }}
             onClick={() => setSelectedTag(item)}
           >
-            <h2>{item.name}</h2>
+            <h2 style={{marginTop:'0'}}>{item.name}</h2>
+            <img className='icon' src={item.iconpath} alt="icon" style={{fill: item.iconcolor, stroke: item.iconcolor, width: '40px', height: '40px' }} />
+ 
           </div>
         ))}
       <div style={{ flex: 2,width:'100%', display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height:'100%' }}>

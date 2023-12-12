@@ -93,31 +93,32 @@ const Popout = ({ onClose, onSubmit }) => {
           </ul>
 
           <div className="icon-selector">
-            {Images.map((image) => (
-              <svg
-                key={image.id}
-                style={{
-                  ...styles.icon,
-                  backgroundColor:
-                    selectedIcon === image.id
-                      ? "white"
-                      : hoveredItem === image.id
-                      ? "lightgray"
-                      : "#ffffff",
-                }}
-                viewBox="0 0 20 20" // Adjust the viewBox as needed
-                xmlns="http://www.w3.org/2000/svg"
-                alt={`Icon ${image.id}`}
-                className={selectedIcon === image.id ? "selected" : ""}
-                onClick={() => setSelectedIcon(image.id)}
-                onMouseEnter={() => setHoveredItem(image.id)}
-                onMouseLeave={() => setHoveredItem(null)}
-              >
-                <path d="M0 0h24v24H0z" fill="none" />
-                <image xlinkHref={image.imageUrl} width="20" height="20" />
-              </svg>
-            ))}
-          </div>
+  {Images.map((image) => (
+    <svg
+      key={image.id}
+      style={{
+        ...styles.icon,
+        backgroundColor:
+          selectedIcon === image.imageUrl
+            ? "white"
+            : hoveredItem === image.id
+            ? "lightgray"
+            : "#ffffff",
+      }}
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+      alt={`Icon ${image.id}`}
+      className={selectedIcon === image.imageUrl ? "selected" : ""}
+      onClick={() => setSelectedIcon(image.imageUrl)}
+      onMouseEnter={() => setHoveredItem(image.id)}
+      onMouseLeave={() => setHoveredItem(null)}
+    >
+      <path d="M0 0h24v24H0z" fill="none" />
+      <image xlinkHref={image.imageUrl} width="20" height="20" />
+    </svg>
+  ))}
+</div>
+
           <label htmlFor="tagColor">Tag Color:</label>
           <input
             type="color"
@@ -159,14 +160,14 @@ const PopoutHandler = () => {
   const handleSubmit = (nameEntry, selectedTag, tagColor, selectedIcon) => {
     console.log(
       "Tag Created:",
+      currentUser.email,
       selectedTag,
       nameEntry,
       tagColor,
       selectedIcon,
-      currentUser.email
     );
     // Modify PushTag to handle the selected icon
-    PushTag(usertag, selectedTag, nameEntry, tagColor, selectedIcon.imageUrl);
+    PushTag(currentUser.email, selectedTag, nameEntry, tagColor, selectedIcon.imageUrl);
     setPopoutOpen(false);
   };
 

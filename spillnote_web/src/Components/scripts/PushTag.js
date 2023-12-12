@@ -6,14 +6,14 @@ export default async function PushTag(
   selectedTag,
   nameEntry,
   tagColor,
-  selectionIcon
+  selectedIcon
 ) {
   const entry = {
     email: email,
     name: nameEntry,
     parents: selectedTag,
     iconcolor: tagColor,
-    iconpath: selectionIcon,
+    iconpath: selectedIcon,
   };
 
   try {
