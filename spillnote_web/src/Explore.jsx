@@ -220,38 +220,42 @@ const Gallery = () => {
           ))}
         </div>
       </div>
-
-      {selectedItem && (
-        <div>
-          {galleryTags.map((item) => (
-            <div
-              key={item.id}
-              style={{
-                border: "1px solid #ccc",
-
-                padding: "10px",
-                margin: "10px",
-                borderRadius: "8px",
-                cursor: "pointer",
-                height: "100px",
-                width: "100px",
-              }}
-              onClick={() => setSelectedTag(item)}
-            >
-              <h2>{item.entry[0].name}</h2>
-            </div>
-          ))}
+  <div style={{ display: "flex", flexDirection: "column" }}>
+  <h1>Edit</h1>
+  {selectedItem && (
+      <div style={{ flex: 1, width:'100%', marginRight: "20px" }}>
+        {galleryTags.map((item) => (
+          <div
+            key={item.id}
+            style={{
+              border: "1px solid #ccc",
+              padding: "10px",
+              margin: "10px",
+              borderRadius: "8px",
+              cursor: "pointer",
+              height: "100px",
+              width: "100px",
+            }}
+            onClick={() => setSelectedTag(item)}
+          >
+            <h2 style={{marginTop:'0'}}>{item.name}</h2>
+            <img className='icon' src={item.iconpath} alt="icon" style={{fill: item.iconcolor, stroke: item.iconcolor, width: '40px', height: '40px' }} />
+ 
+          </div>
+        ))}
+      <div style={{ flex: 2,width:'100%', display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height:'100%' }}>
           <ReactQuill
-            theme="snow"
-            modules={modules}
-            formats={formats}
-            value={quillContent}
-            onChange={setQuillContent}
-            style={{ minHeight: "300px" }}
-          />
-          <button onClick={handleSave}>Save Changes</button>
-        </div>
-      )}
+          theme="snow"
+          modules={modules}
+          formats={formats}
+          value={quillContent}
+          onChange={setQuillContent}
+          style={{ minHeight: "300px", width: "100%"}}        />
+        <button onClick={handleSave}>Save Changes</button>
+      </div>
+    </div>
+  )}
+</div>
     </div>
   );
 };

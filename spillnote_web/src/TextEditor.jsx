@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
 import Nav from "./Components/Nav";
 import "./Small.css";
+import { handleNew } from "./util";
+import { useAuth } from "./firebase";
 
 const TextEditor = () => {
+  const [editorContent, setEditorContent] = useState("");
+  const [quillContent, setQuillContent] = useState("");
+  const [qTitle, setQTitle] = useState(""); 
+
+  const handleTitleChange = (event) => {
+    const titleValue = event.target.value;
+    setQTitle(titleValue);
+  };
+
+  const currentUser = useAuth();
   var modules = {
     toolbar: [
       [{ size: ["small", false, "large", "huge"] }],
@@ -96,13 +108,20 @@ const TextEditor = () => {
   };
 
   const handleProcedureContentChange = (content) => {
+    setEditorContent(content);
     console.log("content---->", content);
   };
-
+  const handleSubmit = () => {
+    console.log("Content submitted:", editorContent);
+    
+    handleNew(currentUser.email,qTitle, quillContent )
+    
+  };
   return (
     <div style={{ display: "flex"}}>
       <Nav />
       <h1 style={{ textAlign: "center", padding: "1em" }}>Spillnote</h1>
+     <input type="text" onChange={handleTitleChange} placeholder="Title"/>
       <div style={{ display: "grid", justifyContent: "center", padding: "1em"}}>
         <ReactQuill 
           id="reactquill"
@@ -110,9 +129,10 @@ const TextEditor = () => {
           modules={modules}
           formats={formats}
           placeholder="write your content ...."
-          onChange={handleProcedureContentChange}
+          onChange={setQuillContent}
           style={{ height: "220px" }}
         ></ReactQuill>
+        <button onClick={handleSubmit}>Submit</button>
       </div>
       <style>
         {Object.entries(quillToolbarStyles).map(
