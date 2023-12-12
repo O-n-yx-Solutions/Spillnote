@@ -30,19 +30,32 @@ const auth = initializeAuth(app, {
   export function logout() {
     return auth().signOut();
   }
-  
+
+  export const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if (user) {
+          resolve(user);
+        } else {
+          reject(new Error('No user is currently logged in.'));
+        }
+        unsubscribe(); // Make sure to unsubscribe to avoid memory leaks
+      });
+    });
+  };
+
   // Custom Hook
   export function useAuth() {
     const [currentUser, setCurrentUser] = useState();
   
     useEffect(() => {
-      //const auth = getAuth(); // Get the Auth instance
-      const unsub = onAuthStateChanged(auth, (user) => setCurrentUser(user));
-      return unsub;
+      const unsubscribe = onAuthStateChanged(auth, (user) => setCurrentUser(user));
+      return unsubscribe;
     }, []);
   
     return currentUser;
   }
+
   export function signup(email, password) {
     //const auth = getAuth(); // Get the Auth instance
     return createUserWithEmailAndPassword(auth, email, password)

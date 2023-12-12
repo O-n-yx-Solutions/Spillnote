@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  ScrollView,
-  StyleSheet,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, ScrollView, StyleSheet, Dimensions, TouchableOpacity } from "react-native";
 import { fetchNotes } from "../util.js";
 import HTML from "react-native-render-html";
+import { useAuth, getCurrentUser } from "../firebase.js";
 
 const GalleryApp = () => {
   const [galleryItems, setGalleryItems] = useState([]);
+  const [currentUser, setCurrentUser] = useState();
 
   const getAndSetNotes = async () => {
-    const authUser = "john@gmail.com";
-    const userEmail = authUser ? authUser : "john@gmail.com";
     try {
-      const fetchedNotes = await fetchNotes(userEmail);
+      const user = await getCurrentUser();
+      console.log(user.email);
+      setCurrentUser(user);
+      const fetchedNotes = await fetchNotes(user.email);
       setGalleryItems(fetchedNotes);
-      // console.log('Notes fetched:', fetchedNotes);
     } catch (error) {
       console.error("Error fetching notes:", error);
     }
@@ -30,6 +26,13 @@ const GalleryApp = () => {
 
   return (
     <View style={styles.container}>
+      <View>
+        {currentUser ? (
+          <Text>Logged in as {currentUser.email}</Text>
+        ) : (
+          <Text>Not logged in.</Text>
+        )}
+      </View>
       <ScrollView style={styles.gallery}>
         {galleryItems.map((item) => (
           <TouchableOpacity key={item.id} style={styles.button}>
@@ -41,7 +44,7 @@ const GalleryApp = () => {
                                <p>${item.content}</p>
                               `,
                 }}
-                contentWidth={Dimensions.get("window").width} // Adjust the content width as needed
+                contentWidth={Dimensions.get("window").width}
               />
             </View>
           </TouchableOpacity>
