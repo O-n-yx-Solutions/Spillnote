@@ -2,7 +2,7 @@ import { collection, addDoc } from "firebase/firestore";
 import db from "../../firebase.js";
 
 export async function PushTag(
-  usertag,
+  email,
   selectedTag,
   nameEntry,
   tagColor,
@@ -10,7 +10,7 @@ export async function PushTag(
 ) {
   const entry = [
     {
-      user: usertag,
+      email: email,
       name: nameEntry,
       parents: selectedTag,
       iconcolor: tagColor,

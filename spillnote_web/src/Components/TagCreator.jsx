@@ -148,13 +148,13 @@ const Popout = ({ onClose, onSubmit }) => {
 };
 
 const PopoutHandler = () => {
+  const currentUser = useAuth();
   const [isPopoutOpen, setPopoutOpen] = useState(false);
 
   const togglePopout = () => {
     setPopoutOpen(!isPopoutOpen);
   };
 
-  const usertag = "0854oFj8R4PuW0iDbDaQ"; // change this to return the current user
 
   const handleSubmit = (nameEntry, selectedTag, tagColor, selectedIcon) => {
     console.log(
@@ -163,7 +163,7 @@ const PopoutHandler = () => {
       nameEntry,
       tagColor,
       selectedIcon,
-      usertag
+      currentUser.email
     );
     // Modify PushTag to handle the selected icon
     PushTag(usertag, selectedTag, nameEntry, tagColor, selectedIcon.imageUrl);

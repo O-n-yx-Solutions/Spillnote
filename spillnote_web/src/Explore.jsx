@@ -238,7 +238,7 @@ const Gallery = () => {
             }}
             onClick={() => setSelectedTag(item)}
           >
-            <h2>{item.entry[0].name}</h2>
+            <h2>{item.name}</h2>
           </div>
         ))}
       <div style={{ flex: 2,width:'100%', display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height:'100%' }}>
