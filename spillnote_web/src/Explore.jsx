@@ -37,7 +37,7 @@ const Gallery = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [selectedTag, setSelectedTag] = useState(null);
   const [quillContent, setQuillContent] = useState("");
-  const [searchInput, setSearchInput] = useState(""); // New state for search input
+  const [searchInput, setSearchInput] = useState("");
 
   var modules = {
     toolbar: [
