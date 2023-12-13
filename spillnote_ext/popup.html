@@ -47,12 +47,17 @@
       <img src="./images/create-svgrepo-com(1).svg" alt="Create" />
       Create Note
     </button>
-    <button id="account">
+    <button id="account" onclick="redirectToAccount()">
       <img src="./images/account.svg" alt="Account" />
       Account
     </button>
 
     <script type="module" src="./firebase.mjs"></script>
     <script type="module" src="./popup.mjs"></script>
+    <script>
+      function redirectToAccount() {
+        window.location.href = "https://spillnote.onrender.com";
+      }
+    </script>
   </body>
 </html>

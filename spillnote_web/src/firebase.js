@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, doc, setDoc, getDoc, collection} from "firebase/firestore";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -24,9 +24,29 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-export function signup(email, password) {
-  return createUserWithEmailAndPassword(auth, email, password);
-}
+export async function signup(email, password) {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    const usersCollection = collection(db, 'users');
+    const existingUserDoc = await getDoc(doc(usersCollection, email));
+
+    if (existingUserDoc.exists()) {
+      throw new Error('User with this email already exists.');
+    }
+
+    const userDocRef = doc(usersCollection, email);
+    await setDoc(userDocRef, {
+      email: user.email,
+      password,
+    });
+
+    return user;
+  } catch (error) {
+    console.error('Signup failed:', error.message);
+    throw error;
+  }
+};
 
 export function login(email, password) {
   return signInWithEmailAndPassword(auth, email, password);
