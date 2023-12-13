@@ -11,7 +11,7 @@ function RegisterPage() {
   const handleSignUp = async () => {
     try {
       // Call the signup function with the entered email and password
-      await signup(email, password);
+      await signup(email, password, firstName, lastName);
 
       // Optionally, you can use the user information (e.g., first name, last name) as needed
       console.log('User signed up successfully:', { firstName, lastName, email });
