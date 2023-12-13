@@ -41,7 +41,6 @@ export default function AcctPage() {
           </button>
         </div>
       </div>
-      <Creator />
     </div>
   );
 }

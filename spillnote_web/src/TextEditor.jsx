@@ -149,8 +149,6 @@ const TextEditor = () => {
               .join(" ")} }` 
         )}
       </style>
-
-      <Creator />
     </div>
   );
 };
