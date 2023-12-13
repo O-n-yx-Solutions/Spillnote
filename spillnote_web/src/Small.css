@@ -157,11 +157,12 @@ form {
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   height: 100vh;
   max-width: 18em;
   background-color: rgb(48, 48, 88);
+  grid-row: 1/11;
 }
 .popout-content {
   display: grid;
@@ -234,7 +235,3 @@ form {
   text-align: right;
 }
 
-::placeholder
-{
-  color: white;
-}

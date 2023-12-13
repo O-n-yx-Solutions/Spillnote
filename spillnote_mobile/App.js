@@ -7,6 +7,7 @@ import Nav from "./Components/Nav";
 import Explore from "./Components/Explore";
 import LoginPage from "./Components/loginPageMobile";
 import RegisterPage from "./Components/regPageMobile";
+import SettingsMobile from "./Components/SettingsMobile";
 import RichTextEditor from "./Components/noteCreate"
 const navigator = createStackNavigator(
   {
@@ -14,6 +15,7 @@ const navigator = createStackNavigator(
     Explore: Explore,
     LoginPage: LoginPage,
     RegisterPage: RegisterPage,
+    SettingsMobile: SettingsMobile,
     Create: RichTextEditor,
   },
   {

@@ -106,6 +106,11 @@ const TextEditor = () => {
     ".ql-snow .ql-picker": {
       color: "#fff",
     },
+    "[data-placeholder]":
+    {
+      color: "#fff",
+      stroke: '#fff',
+    }
   };
 
 
@@ -116,19 +121,19 @@ const TextEditor = () => {
     
   };
   return (
-    <div style={{ display: "flex"}}>
-      <Nav />
-      <h1 style={{ textAlign: "center", padding: "1em" }}>Spillnote</h1>
-     <input type="text" onChange={handleTitleChange} placeholder="Title"/>
-      <div style={{ display: "grid", justifyContent: "center", padding: "1em"}}>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(8, 1fr)", gridTemplateRows: "repeat(10, 1fr)"}}>
+      <Nav style={{}}/>
+      <h1 style={{ textAlign: "center", padding: "1em", gridColumn: "2/9", gridRow: "1/4"}}>Create New Note</h1>
+     <input type="text" onChange={handleTitleChange} placeholder="Title" style={{gridColumn: "4/7", gridRow: "3"}}/>
+      <div style={{ display: "block",  justifyContent: "center", padding: "1em", gridColumn: "3/8", gridRow: "4/11"}}>
         <ReactQuill 
           id="reactquill"
           theme="snow"
           modules={modules}
           formats={formats}
-          placeholder="write your content ...."
+          placeholder="write your content ..."
           onChange={setQuillContent}
-          style={{ height: "220px" }}
+          style={{ height: "90%" }}
         ></ReactQuill>
         <button onClick={handleSubmit}>Submit</button>
       </div>
@@ -137,7 +142,7 @@ const TextEditor = () => {
           ([selector, rules]) =>
             `${selector} { ${Object.entries(rules)
               .map(([property, value]) => `${property}: ${value};`)
-              .join(" ")} }`
+              .join(" ")} }` 
         )}
       </style>
       <Creator />
