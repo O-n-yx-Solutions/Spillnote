@@ -37,7 +37,7 @@ const Gallery = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [selectedTag, setSelectedTag] = useState(null);
   const [quillContent, setQuillContent] = useState("");
-  const [searchInput, setSearchInput] = useState(""); // New state for search input
+  const [searchInput, setSearchInput] = useState("");
 
   var modules = {
     toolbar: [
@@ -182,7 +182,7 @@ const Gallery = () => {
       color: "#fff",
     },
   };
-  //const quillStyles = Object.entries(quillToolbarStyles).map(([selector, rules]) =>`${selector} { ${Object.entries(rules).map(([property, value]) => `${property}: ${value};`).join(" ")} }`);
+ 
 
   return (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(8, 1fr)"}}>
@@ -242,7 +242,13 @@ const Gallery = () => {
   <div style={{ display: "grid", gridColumn: "6/9"}}>
   {/* <h1>Edit</h1> */}
   {selectedItem && (
-      <div style={{ display: "grid",gridTemplateColumns: "repeat(autoFill, 1fr)", gridTemplateRows: "repeat(8, 1fr)", width:'100%', marginRight: "20px" }}>
+      <div style={{ 
+          display: "grid",
+          gridTemplateColumns: "repeat(autoFill, 1fr)",
+          gridTemplateRows: "repeat(8, 1fr)", 
+          width:'100%', 
+          marginRight: "20px" 
+        }}>
         {galleryTags.map((item) => (
           <div
             key={item.id}

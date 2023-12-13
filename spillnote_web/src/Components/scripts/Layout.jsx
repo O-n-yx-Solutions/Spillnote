@@ -16,6 +16,9 @@ const Layout = () => {
         <div>
           <Link to="/calendar">Calendar</Link>
         </div>
+        <div>
+          <Link to="/text_editor">Create</Link>
+        </div>
         </nav>
       <Outlet />
     </>
