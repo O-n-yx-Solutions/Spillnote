@@ -11,8 +11,6 @@ var firebaseConfig = {
   appId: "1:301966407502:web:2a4f9075431afc0bf5901f",
 };
 
-// Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-
-// Initialize Firestore
 export const db = getFirestore(firebaseApp);
+//sets up Firebase SDK and creates an instance for us to use
