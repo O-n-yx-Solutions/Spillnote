@@ -136,7 +136,7 @@ const TextEditor = () => {
           onChange={setQuillContent}
           style={{ height: "90%" }}
         ></ReactQuill>
-        <button onClick={handleSubmit}>Submit</button>
+        <button onClick={handleSubmit} style={{position: "relative", zIndex: 11, justifySelf:"center"}}>Submit</button>
       </div>
       <style>
         {Object.entries(quillToolbarStyles).map(
