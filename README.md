@@ -12,7 +12,26 @@ Overview
 
 ## Technologies and Environment
 
-## Description
+## Running Web Development
+-Open spillnote_web in terminal
+-Run npm install
+-Run npm start
+-Open provided link in your chosen browser
+
+## Running Mobile Development
+-Download Expo Go from the play store on an android device or emulator
+-Ensure your android device/emulator is connected to the same network as your computer you will build on.
+-Open spillnote_mobile in terminal
+-Run npm install
+-Run npm start
+-Scan provided QR code in expo go or open provided link in emulator
+
+## Running Extension
+-Visit chrome://extensions/ in a chrome based browser
+-Enable developer mode in the top right
+-Click load unpacked on the top left
+-Open the spillnote_ext file 
+-Enable the extension if you need 
 
 ## Project Management
 
