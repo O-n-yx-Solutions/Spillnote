@@ -34,6 +34,12 @@ const HomeScreen = ({ navigation }) => {
       >
         <Text style={styles.buttonText}>Create</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.button, { backgroundColor: "#3f4966" }]}
+        onPress={() => handleNavigation("SettingsMobile")}
+      >
+        <Text style={styles.buttonText}>Settings</Text>
+      </TouchableOpacity>
     </View>
   );
 };
