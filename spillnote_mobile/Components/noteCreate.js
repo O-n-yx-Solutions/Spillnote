@@ -23,6 +23,11 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     paddingVertical: 10,
   },
+  root: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+    backgroundColor: 'rgb(48, 48, 88)',
+  },
   editor: {
     flex: 1,
     backgroundColor: 'white',
