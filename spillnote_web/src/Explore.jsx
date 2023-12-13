@@ -182,7 +182,7 @@ const Gallery = () => {
       color: "#fff",
     },
   };
-  //const quillStyles = Object.entries(quillToolbarStyles).map(([selector, rules]) =>`${selector} { ${Object.entries(rules).map(([property, value]) => `${property}: ${value};`).join(" ")} }`);
+ 
 
   return (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(8, 1fr)"}}>
@@ -242,7 +242,11 @@ const Gallery = () => {
   <div style={{ display: "grid", gridColumn: "6/9"}}>
   {/* <h1>Edit</h1> */}
   {selectedItem && (
-      <div style={{ display: "grid",gridTemplateColumns: "repeat(4, 1fr)", gridTemplateRows: "repeat(8, 1fr)", width:'100%', marginRight: "20px" }}>
+      <div style={{ display: "grid",
+        gridTemplateColumns: "repeat(4, 1fr)",
+        gridTemplateRows: "repeat(8, 1fr)", 
+        width:'100%', 
+        marginRight: "20px" }}>
         {galleryTags.map((item) => (
           <div
             key={item.id}
