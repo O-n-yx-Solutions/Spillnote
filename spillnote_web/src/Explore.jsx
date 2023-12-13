@@ -168,34 +168,7 @@ const Gallery = () => {
   );
 
 
-  function hexToCssFilter(hexColor) {
-    // Convert Hex to RGB
-    let r = parseInt(hexColor.slice(1, 3), 16);
-    let g = parseInt(hexColor.slice(3, 5), 16);
-    let b = parseInt(hexColor.slice(5, 7), 16);
   
-    // Normalize RGB values to be between 0 and 1
-    let normalizedR = r / 255;
-    let normalizedG = g / 255;
-    let normalizedB = b / 255;
-  
-    // Calculate luminance
-    let luminance = 0.2126 * normalizedR + 0.7152 * normalizedG + 0.0722 * normalizedB;
-  
-    // Determine whether the color is light or dark
-    let brightness = luminance > 0.5 ? 'brightness(0.8)' : 'brightness(1.2)';
-  
-    // Create the CSS filter string
-    let filter = `${brightness} contrast(1.2) saturate(1.5)`;
-  
-    return filter;
-  }
-  
-  // Example usage
-  let hexColor = "#3498db";
-  let cssFilter = hexToCssFilter(hexColor);
-  console.log(cssFilter);
-
   const quillToolbarStyles = {
     ".ql-toolbar svg": {
       stroke: "#fff",
@@ -301,8 +274,9 @@ const Gallery = () => {
           value={quillContent}
           onChange={setQuillContent}
           style={{minHeight: "300px", height: "90%", width: "100%"}} />
-        <button onClick={handleSave}>Save Changes</button>
       </div>
+      <button style={{ zIndex: 9999,cursor: 'pointer' }} onClick={handleSave}>Save Changes</button>
+
     </div>
   )}
 </div>

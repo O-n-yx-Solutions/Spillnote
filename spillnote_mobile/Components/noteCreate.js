@@ -3,9 +3,11 @@
 import React, { useRef } from 'react';
 import { SafeAreaView, StyleSheet, StatusBar, TouchableOpacity, Text, Alert } from 'react-native';
 import QuillEditor, { QuillToolbar } from 'react-native-cn-quill';
-
+import { handleNew } from '../util';
+import { getCurrentUser } from '../firebase';
 export default function App() {
   const editorRef = useRef();
+  const qTitle = 'Title';
   const deltaToHtml = (delta) => {
     return delta.ops
       .map((op) => {
@@ -31,6 +33,7 @@ export default function App() {
       })
       .join('');
   };
+
   const handleGetContent = async () => {
     try {
       const delta = await editorRef.current.getContents();
@@ -39,8 +42,20 @@ export default function App() {
       console.error('Error getting content:', error.message);
     }
   };
+  const handleSubmit = async () => {
+    try {
+      const delta = await editorRef.current.getContents();
+      const currentUser = await getCurrentUser();
 
-  return (
+      console.log("Delta content:", delta)
+      console.log("Html content:", deltaToHtml(delta))
+      handleNew(currentUser.email, qTitle, deltaToHtml(delta), JSON.stringify(delta));
+    }catch (error) {
+      console.error('Error getting content:', error.message);
+    }
+    
+  };
+    return (
     <SafeAreaView style={styles.root}>
       <StatusBar style="auto" />
       <QuillEditor
@@ -49,7 +64,7 @@ export default function App() {
         initialHtml="<h1>Write Here!</h1>"
       />
       <QuillToolbar editor={editorRef} options="full" theme="dark" />
-      <TouchableOpacity style={styles.button} onPress={handleGetContent}>
+      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text>Get Content</Text>
       </TouchableOpacity>
     </SafeAreaView>

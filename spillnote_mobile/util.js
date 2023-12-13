@@ -13,12 +13,24 @@ import {
   import db from './firebase.js';
 
 
-export const handleNew = async() => {
-    const collectionRef = collection(db, "notes");
-    const payload = { class: value, timestamp: serverTimestamp() };
-
-    await addDoc(collectionRef, payload);
-}
+  export const handleNew = async (userEmail, title, textContent, deltaContent) => {
+    try {
+      const collectionRef = collection(db, "notes"); 
+      const contentString = typeof textContent === 'string' ? textContent : '';
+      const payload = {
+        Title:title,
+        content: contentString,
+        email: userEmail,
+        timestamp: serverTimestamp(),
+        deltaContent: deltaContent
+      };
+  
+      const docRef = await addDoc(collectionRef, payload);
+      console.log("Document written with ID: ", docRef.id);
+    } catch (error) {
+      console.error("Error adding document: ", error);
+    }
+  };
 
 export const handleEdit = async(id) => {
     const value = prompt("Edit note");

@@ -115,6 +115,7 @@ const TextEditor = () => {
 
 
   const handleSubmit = () => {
+    
     console.log("Content submitted:", editorContent);
     
     handleNew(currentUser.email,qTitle, quillContent )
@@ -145,6 +146,7 @@ const TextEditor = () => {
               .join(" ")} }` 
         )}
       </style>
+
       <Creator />
     </div>
   );
