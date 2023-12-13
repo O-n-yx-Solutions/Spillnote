@@ -1,74 +1,30 @@
-import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
-
-const RichTextEditor = () => {
-  const [text, setText] = useState('');
-  const [isBold, setIsBold] = useState(false);
-  const [isItalic, setIsItalic] = useState(false);
-  const [isUnderline, setIsUnderline] = useState(false);
-
-  const handleBold = () => {
-    setIsBold(!isBold);
-  };
-
-  const handleItalic = () => {
-    setIsItalic(!isItalic);
-  };
-
-  const handleUnderline = () => {
-    setIsUnderline(!isUnderline);
-  };
+import React from 'react';
+import { SafeAreaView, StyleSheet, StatusBar } from 'react-native';
+import QuillEditor, { QuillToolbar } from 'react-native-cn-quill';
+export default function App() {
+  const _editor = React.createRef();
 
   return (
-    <View>
-      <TextInput
-        multiline
-        value={text}
-        onChangeText={setText}
-        style={[
-          styles.editor,
-          isBold && styles.boldText,
-          isItalic && styles.italicText,
-          isUnderline && styles.underlineText,
-        ]}
+    <SafeAreaView style={styles.root}>
+      <StatusBar style="auto" />
+      <QuillEditor
+        style={styles.editor}
+        ref={_editor}
+        initialHtml="<h1>Write Here!</h1>"
       />
-      <View style={styles.formattingBar}>
-        <TouchableOpacity onPress={handleBold}>
-          <Text>B</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handleItalic}>
-          <Text>I</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handleUnderline}>
-          <Text>U</Text>
-        </TouchableOpacity>
-        {/* Add more formatting options as needed */}
-      </View>
-    </View>
+      <QuillToolbar editor={_editor} options="full" theme="dark" />
+    </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  editor: {
-    borderWidth: 1,
-    borderColor: 'gray',
-    padding: 10,
-    minHeight: 150,
-  },
-  boldText: {
+  title: {
     fontWeight: 'bold',
+    alignSelf: 'center',
+    paddingVertical: 10,
   },
-  italicText: {
-    fontStyle: 'italic',
-  },
-  underlineText: {
-    textDecorationLine: 'underline',
-  },
-  formattingBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginTop: 10,
+  editor: {
+    flex: 1,
+    backgroundColor: 'white',
   },
 });
-
-export default RichTextEditor;
