@@ -18,7 +18,7 @@
   },
   "permissions": ["activeTab", "<all_urls>", "tabs"],
   "background": {
-    "page": "background.html",
+    "page": "popup.html",
     "persistent": false
   },
   "content_scripts": [
