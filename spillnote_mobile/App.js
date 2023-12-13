@@ -1,7 +1,6 @@
 
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-import { TouchableOpacity, Text } from "react-native";
 
 import Nav from "./Components/Nav";
 import Explore from "./Components/Explore";
@@ -21,11 +20,11 @@ const navigator = createStackNavigator(
   {
     initialRouteName: "Home",
     defaultNavigationOptions: {
-      title: "App",
+      title: "Spillnote",
       headerStyle: {
-        backgroundColor: "#3f4966", // Background color for the header
+        backgroundColor: "#3f4966",
       },
-      headerTintColor: "white", // Text color for the header
+      headerTintColor: "white", 
     },
   }
 );
