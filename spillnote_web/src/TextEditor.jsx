@@ -5,6 +5,7 @@ import Nav from "./Components/Nav";
 import "./Small.css";
 import { handleNew } from "./util";
 import { useAuth } from "./firebase";
+import Creator from "./Components/Create";
 
 const TextEditor = () => {
   const [editorContent, setEditorContent] = useState("");
@@ -139,6 +140,7 @@ const TextEditor = () => {
               .join(" ")} }`
         )}
       </style>
+      <Creator />
     </div>
   );
 };
