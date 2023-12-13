@@ -168,17 +168,64 @@ const Gallery = () => {
   );
 
 
+  function hexToCssFilter(hexColor) {
+    // Convert Hex to RGB
+    let r = parseInt(hexColor.slice(1, 3), 16);
+    let g = parseInt(hexColor.slice(3, 5), 16);
+    let b = parseInt(hexColor.slice(5, 7), 16);
+  
+    // Normalize RGB values to be between 0 and 1
+    let normalizedR = r / 255;
+    let normalizedG = g / 255;
+    let normalizedB = b / 255;
+  
+    // Calculate luminance
+    let luminance = 0.2126 * normalizedR + 0.7152 * normalizedG + 0.0722 * normalizedB;
+  
+    // Determine whether the color is light or dark
+    let brightness = luminance > 0.5 ? 'brightness(0.8)' : 'brightness(1.2)';
+  
+    // Create the CSS filter string
+    let filter = `${brightness} contrast(1.2) saturate(1.5)`;
+  
+    return filter;
+  }
+  
+  // Example usage
+  let hexColor = "#3498db";
+  let cssFilter = hexToCssFilter(hexColor);
+  console.log(cssFilter);
+
+  const quillToolbarStyles = {
+    ".ql-toolbar svg": {
+      stroke: "#fff",
+    },
+    ".ql-snow.ql-toolbar button svg": {
+      stroke: "#fff",
+    },
+    ".ql-snow .ql-stroke": {
+      stroke: "#fff",
+    },
+    ".ql-snow .ql-picker": {
+      color: "#fff",
+    },
+  };
+  //const quillStyles = Object.entries(quillToolbarStyles).map(([selector, rules]) =>`${selector} { ${Object.entries(rules).map(([property, value]) => `${property}: ${value};`).join(" ")} }`);
+
   return (
-    <div style={{ display: "flex" }}>
-      <Nav />
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(8, 1fr)"}}>
+      <Nav style={{gridColumn: "1"}}/>
       <div
         style={{
-          width: "70vw",
+          gridColumn: "2/6",
+          borderRight: "1px solid rgba(0, 0, 0, .5)",
+          padding: "1em",
+          margin: "1em"
         }}
       >
         <input
           type="text"
-          placeholder="&#x1F50E;&#xFE0E;"
+          placeholder="&#x1F50E;&#xFE0E; Search"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
@@ -194,6 +241,7 @@ const Gallery = () => {
             maxHeight: "80vh",
             overflowY: "auto",
             overflowX: "hidden",
+            
           }}
         >
           {filteredItems.map((item, index) => (
@@ -220,10 +268,10 @@ const Gallery = () => {
           ))}
         </div>
       </div>
-  <div style={{ display: "flex", flexDirection: "column" }}>
-  <h1>Edit</h1>
+  <div style={{ display: "grid", gridColumn: "6/9"}}>
+  {/* <h1>Edit</h1> */}
   {selectedItem && (
-      <div style={{ flex: 1, width:'100%', marginRight: "20px" }}>
+      <div style={{ display: "grid",gridTemplateColumns: "repeat(4, 1fr)", gridTemplateRows: "repeat(8, 1fr)", width:'100%', marginRight: "20px" }}>
         {galleryTags.map((item) => (
           <div
             key={item.id}
@@ -233,31 +281,42 @@ const Gallery = () => {
               margin: "10px",
               borderRadius: "8px",
               cursor: "pointer",
-              height: "100px",
-              width: "100px",
+              height: "40px",
+              width: "40px",
+              justifySelf: "center"
             }}
             onClick={() => setSelectedTag(item)}
           >
-            <h2 style={{marginTop:'0'}}>{item.name}</h2>
-            <img className='icon' src={item.iconpath} alt="icon" style={{fill: item.iconcolor, stroke: item.iconcolor, width: '40px', height: '40px' }} />
- 
+            <h2 style={{marginTop:'0', fontSize: "0em"}}>{item.name}</h2>
+            <svg style={{xmlns: "http://www.w3.org/2000/svg", width: '30px', height: '30px'}}>
+              <image className='icon' href={item.iconpath} alt="icon" style={{width: '30px', height: '30px', filter: "invert(1)"}} />
+            </svg>
           </div>
         ))}
-      <div style={{ flex: 2,width:'100%', display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height:'100%' }}>
+      <div style={{ gridColumn: "1/5", gridRow: "2/9",width:'100%', alignItems: "center", justifyContent: "center" }}>
           <ReactQuill
           theme="snow"
           modules={modules}
           formats={formats}
           value={quillContent}
           onChange={setQuillContent}
-          style={{ minHeight: "300px", width: "100%"}}        />
+          style={{minHeight: "300px", height: "90%", width: "100%"}} />
         <button onClick={handleSave}>Save Changes</button>
       </div>
     </div>
   )}
 </div>
+<style>
+        {Object.entries(quillToolbarStyles).map(
+          ([selector, rules]) =>
+            `${selector} { ${Object.entries(rules)
+              .map(([property, value]) => `${property}: ${value};`)
+              .join(" ")} }`
+        )}
+      </style>
     </div>
   );
 };
+
 
 export default Gallery;

@@ -8,6 +8,8 @@ import Explore from "./Components/Explore";
 import LoginPage from "./Components/loginPageMobile";
 import RegisterPage from "./Components/regPageMobile";
 import DrawingScreen from "./Components/DrawingScreen";
+import SettingsMobile from "./Components/SettingsMobile";
+
 const navigator = createStackNavigator(
   {
     Home: Nav,
@@ -15,6 +17,7 @@ const navigator = createStackNavigator(
     LoginPage: LoginPage,
     RegisterPage: RegisterPage,
     DrawingScreen: DrawingScreen,
+    SettingsMobile: SettingsMobile,
   },
   {
     initialRouteName: "Home",
