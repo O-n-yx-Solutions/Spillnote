@@ -5,6 +5,7 @@ const HomeScreen = ({ navigation }) => {
   const handleNavigation = (screen) => {
     navigation.navigate(screen);
   };
+  
 
   return (
     <View style={styles.container}>
@@ -29,9 +30,9 @@ const HomeScreen = ({ navigation }) => {
       </TouchableOpacity>
       <TouchableOpacity
         style={[styles.button, { backgroundColor: "#3f4966" }]}
-        onPress={() => handleNavigation("DrawingScreen")}
+        onPress={() => handleNavigation("Create")}
       >
-        <Text style={styles.buttonText}>Draw</Text>
+        <Text style={styles.buttonText}>Create</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={[styles.button, { backgroundColor: "#3f4966" }]}

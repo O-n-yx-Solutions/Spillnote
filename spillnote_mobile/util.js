@@ -14,8 +14,6 @@ import {
 
 
 export const handleNew = async() => {
-    const value = prompt("Enter a note");
-
     const collectionRef = collection(db, "notes");
     const payload = { class: value, timestamp: serverTimestamp() };
 

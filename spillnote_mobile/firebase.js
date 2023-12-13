@@ -4,6 +4,12 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, on
 
 import { useEffect, useState } from "react";
 
+import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
+import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
+
+
+
+
 export const firebaseConfig = {
   apiKey: "AIzaSyCnMQRkegXyhYe8cdfdOLNUHF2ciA6w_6g",
   authDomain: "spillnote-f2023.firebaseapp.com",
@@ -17,26 +23,41 @@ export const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const auth = getAuth(app);
+const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(ReactNativeAsyncStorage)
+});
 
   export function logout() {
     return auth().signOut();
   }
-  
+
+  export const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if (user) {
+          resolve(user);
+        } else {
+          reject(new Error('No user is currently logged in.'));
+        }
+        unsubscribe(); // Make sure to unsubscribe to avoid memory leaks
+      });
+    });
+  };
+
   // Custom Hook
   export function useAuth() {
     const [currentUser, setCurrentUser] = useState();
   
     useEffect(() => {
-      const auth = getAuth(); // Get the Auth instance
-      const unsub = onAuthStateChanged(auth, (user) => setCurrentUser(user));
-      return unsub;
+      const unsubscribe = onAuthStateChanged(auth, (user) => setCurrentUser(user));
+      return unsubscribe;
     }, []);
   
     return currentUser;
   }
+
   export function signup(email, password) {
-    const auth = getAuth(); // Get the Auth instance
+    //const auth = getAuth(); // Get the Auth instance
     return createUserWithEmailAndPassword(auth, email, password)
       .catch((error) => {
         console.error('Signup failed:', error.message);
@@ -45,7 +66,7 @@ const auth = getAuth(app);
   }
   
   export function login(email, password) {
-    const auth = getAuth(); // Get the Auth instance
+    // const auth = getAuth(); // Get the Auth instance
     return signInWithEmailAndPassword(auth, email, password)
       .catch((error) => {
         console.error('Login failed:', error.message);

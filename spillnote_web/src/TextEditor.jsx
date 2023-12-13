@@ -112,10 +112,7 @@ const TextEditor = () => {
     }
   };
 
-  const handleProcedureContentChange = (content) => {
-    setEditorContent(content);
-    console.log("content---->", content);
-  };
+
   const handleSubmit = () => {
     console.log("Content submitted:", editorContent);
     
