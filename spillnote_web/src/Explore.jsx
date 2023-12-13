@@ -242,7 +242,7 @@ const Gallery = () => {
   <div style={{ display: "grid", gridColumn: "6/9"}}>
   {/* <h1>Edit</h1> */}
   {selectedItem && (
-      <div style={{ display: "grid",gridTemplateColumns: "repeat(4, 1fr)", gridTemplateRows: "repeat(8, 1fr)", width:'100%', marginRight: "20px" }}>
+      <div style={{ display: "grid",gridTemplateColumns: "repeat(autoFill, 1fr)", gridTemplateRows: "repeat(8, 1fr)", width:'100%', marginRight: "20px" }}>
         {galleryTags.map((item) => (
           <div
             key={item.id}
@@ -252,15 +252,18 @@ const Gallery = () => {
               margin: "10px",
               borderRadius: "8px",
               cursor: "pointer",
-              height: "40px",
-              width: "40px",
-              justifySelf: "center"
+              height: "30px",
+              width: "30px",
+              justifySelf: "center",
+              gridRow: "1",
+              gap: "0"
+              
             }}
             onClick={() => setSelectedTag(item)}
           >
-            <h2 style={{marginTop:'0', fontSize: "0em"}}>{item.name}</h2>
-            <svg style={{xmlns: "http://www.w3.org/2000/svg", width: '30px', height: '30px'}}>
-              <image className='icon' href={item.iconpath} alt="icon" style={{width: '30px', height: '30px', filter: "invert(1)"}} />
+            <h2 style={{margin: 0, fontSize: "0.5em", padding: 0}}>{item.name}</h2>
+            <svg style={{xmlns: "http://www.w3.org/2000/svg", width: '20px', height: '20px'}}>
+              <image className='icon' href={item.iconpath} alt="icon" style={{width: '20px', height: '20px', filter: "invert(1)"}} />
             </svg>
           </div>
         ))}
@@ -273,7 +276,7 @@ const Gallery = () => {
           onChange={setQuillContent}
           style={{minHeight: "300px", height: "90%", width: "100%"}} />
       </div>
-      <button style={{ zIndex: 9999,cursor: 'pointer' }} onClick={handleSave}>Save Changes</button>
+      <button style={{ zIndex: 9999,cursor: 'pointer', justifySelf: "center", gridColumn: "1/5", gridRow: "8" }} onClick={handleSave}>Save Changes</button>
 
     </div>
   )}
