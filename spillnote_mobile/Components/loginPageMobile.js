@@ -99,11 +99,6 @@ const styles = StyleSheet.create({
     marginLeft: 5,
   },
 
-  image: {
-    width: 200,
-    height: 200,
-    resizeMode: "cover",
-  },
 });
 
 export default LoginPage;

@@ -11,7 +11,6 @@ const GalleryApp = () => {
   const getAndSetNotes = async () => {
     try {
       const user = await getCurrentUser();
-      console.log(user.email);
       setCurrentUser(user);
       const fetchedNotes = await fetchNotes(user.email);
       setGalleryItems(fetchedNotes);
@@ -26,13 +25,7 @@ const GalleryApp = () => {
 
   return (
     <View style={styles.container}>
-      <View>
-        {currentUser ? (
-          <Text>Logged in as {currentUser.email}</Text>
-        ) : (
-          <Text>Not logged in.</Text>
-        )}
-      </View>
+      
       <ScrollView style={styles.gallery}>
         {galleryItems.map((item) => (
           <TouchableOpacity key={item.id} style={styles.button}>
