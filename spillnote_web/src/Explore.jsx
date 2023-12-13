@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Nav from "./Components/Nav";
 import { fetchNotes, fetchTags, db, removeNote } from "./util";
 import { editDbText, editNoteTags } from "./util";
-import TextEditor from "./TextEditor";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useAuth } from "./firebase";

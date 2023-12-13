@@ -1,15 +1,9 @@
-import { useState } from "react";
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./Components/scripts/Layout.jsx";
 import NoPage from "./Components/scripts/NoPage.jsx";
 import TextEditor from "./TextEditor.jsx";
 import RegisterPage from "./Components/RegPage";
 import LoginPage from "./Components/LoginPage";
-import Nav from "./Components/Nav.jsx";
-import Choices from "./Choices";
 import Explore from "./Explore";
-import Credit from "./Credit.jsx";
 import AcctPage from "./Components/AcctPage.jsx";
 import SettingsPage from "./Components/settingsPage.jsx";
 import Calendar from "./Components/Callender.jsx";

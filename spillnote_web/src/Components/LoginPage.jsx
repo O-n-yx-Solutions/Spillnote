@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { login, useAuth } from "../firebase";
 import Nav from "./Nav.jsx";
 import { Link, useNavigate } from "react-router-dom";
+import './styles/RegPage.css';
 
 export default function LoginPage() {
   const [loading, setLoading] = useState(false);
@@ -22,9 +23,9 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="login-out-form">
+    <div className="signup-section" style={{display: "grid", gridTemplateColumns: "repeat(8, 1fr)"}}>
       <Nav />
-      <div className="login-out-form-inputs">
+      <div className="login-out-form-inputs" style={{gridColumn: "2/9"}}>
         <h2>Login</h2>
         <input
           ref={emailRef}

@@ -1,7 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
-import TextEditor from "../TextEditor.jsx";
 const Creator = () => {
   const navigate = useNavigate();
   const handleClick = () => {

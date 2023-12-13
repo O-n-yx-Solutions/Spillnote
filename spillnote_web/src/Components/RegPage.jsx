@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import { signup, login, logout, useAuth } from "../firebase.js";
+import { signup, useAuth } from "../firebase.js";
 import Header from "../Common/Header.jsx";
 import "./styles/RegPage.css";
 
@@ -24,9 +24,9 @@ export default function RegisterPage() {
     }
 
     return (
-        <div className="login-out-form">
+        <div style={{display: "grid", gridTemplateColumns: "repeat(8, 1fr)"}}>
             <Header />
-            <div className="signup-section">
+            <div className="signup-section" style={{gridColumn: "2/9"}}>
                 <h1>Sign Up</h1>
                 <div className="login-out-form-inputs">
                     <input ref={emailRef} type="email" name="clientEmail" id="clientEmail" placeholder="Email" required />

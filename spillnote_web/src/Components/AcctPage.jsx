@@ -30,7 +30,7 @@ export default function AcctPage() {
   }
 
   return (
-    <div className="acct-page-container">
+    <div className="acct-page-container" style={{backgroundImage: "linearGradient(rgb(0, 102, 255), rgb(212, 0, 255))"}}>
       <Nav />
       <div className="account-section">
         <h1>Account</h1>
@@ -40,7 +40,6 @@ export default function AcctPage() {
             Log Out
           </button>
         </div>
-        <Link to="/">Home</Link>
       </div>
       <Creator />
     </div>

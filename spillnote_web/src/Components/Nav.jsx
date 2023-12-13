@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import PopoutHandler from "./TagCreator";
 import Layout from "./scripts/Layout";
+import '../Small.css';
+import '../Large.css';
+
 const navigationData = [
   {
     id: 1,
