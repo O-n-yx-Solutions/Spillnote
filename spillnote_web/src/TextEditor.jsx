@@ -6,6 +6,7 @@ import "./Small.css";
 import { handleNew } from "./util";
 import { useAuth } from "./firebase";
 import Creator from "./Components/Create";
+import { useNavigate } from "react-router-dom"
 
 const TextEditor = () => {
   const [editorContent, setEditorContent] = useState("");
@@ -113,11 +114,14 @@ const TextEditor = () => {
     }
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = () => {
     
     console.log("Content submitted:", editorContent);
     
     handleNew(currentUser.email,qTitle, quillContent )
+    navigate("/");
     
   };
   return (

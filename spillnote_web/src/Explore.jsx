@@ -190,7 +190,6 @@ const Gallery = () => {
       <div
         style={{
           gridColumn: "2/6",
-          borderRight: "1px solid rgba(0, 0, 0, .5)",
           padding: "1em",
           margin: "1em"
         }}
