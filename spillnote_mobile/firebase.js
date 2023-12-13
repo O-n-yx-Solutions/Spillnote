@@ -28,7 +28,7 @@ const auth = initializeAuth(app, {
 });
 
   export function logout() {
-    return auth().signOut();
+    return signOut(auth);
   }
 
   export const getCurrentUser = () => {
@@ -137,4 +137,36 @@ const auth = initializeAuth(app, {
     await Promise.all(deletePromises);
   }
   
+
+
+export async function getUserInfo(user) {
+  const usersCollection = collection(db, 'users');
+  const userDoc = doc(usersCollection, user.email);
+  
+  try {
+    const userSnapshot = await getDoc(userDoc);
+
+    if (userSnapshot.exists()) {
+      // Access the data from the user document
+      const userData = userSnapshot.data();
+      
+      // Assuming your user document has fields 'firstName' and 'lastName'
+      const firstName = userData.firstName;
+      const lastName = userData.lastName;
+
+      // Now you can use firstName and lastName as needed
+      console.log('First Name:', firstName);
+      console.log('Last Name:', lastName);
+
+      return { firstName, lastName };
+    } else {
+      console.log('User document does not exist.');
+      return null; // or handle accordingly
+    }
+  } catch (error) {
+    console.error('Error retrieving user information:', error);
+    throw error; // Handle the error as needed
+  }
+}
+
 export default db;

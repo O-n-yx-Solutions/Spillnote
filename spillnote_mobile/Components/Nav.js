@@ -38,7 +38,7 @@ const HomeScreen = ({ navigation }) => {
         style={[styles.button, { backgroundColor: "#3f4966" }]}
         onPress={() => handleNavigation("SettingsMobile")}
       >
-        <Text style={styles.buttonText}>Settings</Text>
+        <Text style={styles.buttonText}>Account</Text>
       </TouchableOpacity>
     </View>
   );
