@@ -10,7 +10,7 @@ function RegisterPage() {
 
   const handleSignUp = async () => {
     try {
-      // signup is in util.js
+      // signup is in firebase
       await signup(email, password, firstName, lastName);
 
       console.log('User signed up successfully:', { firstName, lastName, email });
